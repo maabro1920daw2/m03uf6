@@ -6,6 +6,7 @@
 package main;
 
 import java.awt.TextField;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,20 +18,35 @@ import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 /**
  *
  * @author >Victor
  */
-public class main {
-     private Connection connect = null;
+public class main extends Application {
+    private Connection connect = null;
     private ResultSet resultSet = null;
     private PreparedStatement preparedStatement = null;
     private Statement statement = null;
     public static void main(String[] args) {
-        
+        launch(args);
     }
-    private void conectarDatabase() throws SQLException {
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/inicio.fxml"));
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/css/style.css");
+        stage.setScene(scene);
+        stage.show();
+    }
+    /*private void conectarDatabase() throws SQLException {
         try {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -71,7 +87,7 @@ public class main {
             System.out.println("El codi te que ser un nombre.");
         }
 
-    }
+    }*/
 
     }
 

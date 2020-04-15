@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15-abr-2020, 17:31:05
+    Author     : Marcos
+*/
+
+/* Estilos view inicio */
+.panelImagen {
+    -fx-background-color: white;
+}
+.panelLogin {
+    -fx-background-color: #76bd43;
+}
+.inputUser, .inputPass {
+    -fx-font-size: 14px;
+    -fx-font-family: Arial, sans-serif;
+}
+.botonLogin, .botonRegistro {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #146092;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #76bd43;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-weight: bold; 
+    -fx-font-size: 11pt;
+    -fx-text-fill: #146092;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;    
+}
+.botonLogin:hover, .botonRegistro:hover {
+    -fx-border-color: #d8d8d8;
+    -fx-text-fill: #d8d8d8;
+}
+
+ 
