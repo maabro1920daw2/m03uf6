@@ -2,14 +2,16 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InicioController">
+<AnchorPane id="AnchorPane" fx:id="content_area" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InicioController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="450.0" styleClass="panelImagen" stylesheets="@../../assets/css/style.css">
          <children>
@@ -20,7 +22,39 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="450.0" prefHeight="600.0" prefWidth="450.0" styleClass="panelLogin" stylesheets="@../../assets/css/style.css">
+      <Pane fx:id="panelRegistro" layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" styleClass="panelRegistro" stylesheets="@../../assets/css/style.css">
+         <children>
+            <TextField fx:id="nombreUsuario" layoutX="75.0" layoutY="129.0" prefHeight="40.0" prefWidth="300.0" promptText="usuario" styleClass="inputUser" stylesheets="@../../assets/css/style.css">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="passwordUsuario" layoutX="75.0" layoutY="195.0" prefHeight="40.0" prefWidth="300.0" promptText="contraseña" styleClass="inputPass" stylesheets="@../../assets/css/style.css">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="tipoUsuario" layoutX="75.0" layoutY="260.0" prefHeight="40.0" prefWidth="300.0" promptText="Seleccion el tipo de empleado" stylesheets="@../../assets/css/style.css" />
+            <Button fx:id="btnRegistro" layoutX="75.0" layoutY="329.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="botonRegistro" stylesheets="@../../assets/css/style.css" text="Registrar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Separator layoutX="75.0" layoutY="402.0" opacity="0.34" prefWidth="300.0" style="-fx-background-color: #146092;" />
+            <Button fx:id="btnVolver" layoutX="75.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#irLogin" prefHeight="45.0" prefWidth="300.0" styleClass="botonVolver" stylesheets="@../../assets/css/style.css" text="Volver">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="panelInicio" layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" styleClass="panelLogin" stylesheets="@../../assets/css/style.css">
          <children>
             <TextField fx:id="loginName" layoutX="75.0" layoutY="157.0" prefHeight="40.0" prefWidth="300.0" promptText="usuario" styleClass="inputUser" stylesheets="@../../assets/css/style.css">
                <font>
@@ -41,7 +75,7 @@
                </cursor>
             </Button>
             <Separator layoutX="75.0" layoutY="366.0" opacity="0.34" prefWidth="300.0" style="-fx-background-color: #146092;" />
-            <Button fx:id="btnRegister" layoutX="75.0" layoutY="398.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="botonRegistro" stylesheets="@../../assets/css/style.css" text="Registrar">
+            <Button fx:id="btnRegister" layoutX="75.0" layoutY="398.0" mnemonicParsing="false" onMouseClicked="#irRegistro" prefHeight="45.0" prefWidth="300.0" styleClass="botonRegistro" stylesheets="@../../assets/css/style.css" text="Registrar">
                <font>
                   <Font size="14.0" />
                </font>
@@ -50,6 +84,6 @@
                </cursor>
             </Button>
          </children>
-      </AnchorPane>
+      </Pane>
    </children>
 </AnchorPane>
