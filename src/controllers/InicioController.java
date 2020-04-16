@@ -8,10 +8,15 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -20,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -44,7 +50,7 @@ public class InicioController implements Initializable {
     @FXML
     private TextField passwordUsuario;
     @FXML
-    private ComboBox<?> tipoUsuario;
+    private ComboBox<String> tipoUsuario;
     @FXML
     private Button btnRegistro;
     @FXML
@@ -58,7 +64,10 @@ public class InicioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<String> tipos = FXCollections.observableArrayList();
+        tipos.addAll("Coordinador", "Gestor", "Corrent");
         imgLogo.setImage(new Image ("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/img/logo_375x210px.png"));
+        tipoUsuario.setItems(tipos);
     }
 
     @FXML
@@ -73,6 +82,18 @@ public class InicioController implements Initializable {
         if(event.getSource().equals(btnVolver)){
             panelInicio.toFront();
         }
+    }
+
+    @FXML
+    public void irMenu(ActionEvent event) throws IOException {
+        Parent menuViewParent = FXMLLoader.load(getClass().getResource("/views/menu.fxml"));
+        Scene menuViewScene = new Scene(menuViewParent);
+        menuViewScene.getStylesheets().clear();
+        menuViewScene.getStylesheets().add("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/css/style.css");
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(menuViewScene);
+        window.show();
     }
     
 }

@@ -24,17 +24,17 @@
       </AnchorPane>
       <Pane fx:id="panelRegistro" layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" styleClass="panelRegistro" stylesheets="@../../assets/css/style.css">
          <children>
-            <TextField fx:id="nombreUsuario" layoutX="75.0" layoutY="129.0" prefHeight="40.0" prefWidth="300.0" promptText="usuario" styleClass="inputUser" stylesheets="@../../assets/css/style.css">
+            <TextField fx:id="nombreUsuario" layoutX="75.0" layoutY="129.0" prefHeight="40.0" prefWidth="300.0" promptText="usuari" styleClass="inputUser" stylesheets="@../../assets/css/style.css">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="passwordUsuario" layoutX="75.0" layoutY="195.0" prefHeight="40.0" prefWidth="300.0" promptText="contraseña" styleClass="inputPass" stylesheets="@../../assets/css/style.css">
+            <TextField fx:id="passwordUsuario" layoutX="75.0" layoutY="195.0" prefHeight="40.0" prefWidth="300.0" promptText="contrasenya" styleClass="inputPass" stylesheets="@../../assets/css/style.css">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="tipoUsuario" layoutX="75.0" layoutY="260.0" prefHeight="40.0" prefWidth="300.0" promptText="Seleccion el tipo de empleado" stylesheets="@../../assets/css/style.css" />
+            <ComboBox fx:id="tipoUsuario" layoutX="75.0" layoutY="260.0" prefHeight="40.0" prefWidth="300.0" promptText="Selecciona un tipus d'empleat" stylesheets="@../../assets/css/style.css" />
             <Button fx:id="btnRegistro" layoutX="75.0" layoutY="329.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="botonRegistro" stylesheets="@../../assets/css/style.css" text="Registrar">
                <font>
                   <Font size="14.0" />
@@ -44,7 +44,7 @@
                </cursor>
             </Button>
             <Separator layoutX="75.0" layoutY="402.0" opacity="0.34" prefWidth="300.0" style="-fx-background-color: #146092;" />
-            <Button fx:id="btnVolver" layoutX="75.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#irLogin" prefHeight="45.0" prefWidth="300.0" styleClass="botonVolver" stylesheets="@../../assets/css/style.css" text="Volver">
+            <Button fx:id="btnVolver" layoutX="75.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#irLogin" prefHeight="45.0" prefWidth="300.0" styleClass="botonVolver" stylesheets="@../../assets/css/style.css" text="Tornar">
                <font>
                   <Font size="14.0" />
                </font>
@@ -56,17 +56,17 @@
       </Pane>
       <Pane fx:id="panelInicio" layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" styleClass="panelLogin" stylesheets="@../../assets/css/style.css">
          <children>
-            <TextField fx:id="loginName" layoutX="75.0" layoutY="157.0" prefHeight="40.0" prefWidth="300.0" promptText="usuario" styleClass="inputUser" stylesheets="@../../assets/css/style.css">
+            <TextField fx:id="loginName" layoutX="75.0" layoutY="157.0" prefHeight="40.0" prefWidth="300.0" promptText="usuari" styleClass="inputUser" stylesheets="@../../assets/css/style.css">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="loginPass" layoutX="75.0" layoutY="223.0" prefHeight="40.0" prefWidth="300.0" promptText="contraseña" styleClass="inputPass" stylesheets="@../../assets/css/style.css">
+            <TextField fx:id="loginPass" layoutX="75.0" layoutY="223.0" prefHeight="40.0" prefWidth="300.0" promptText="contrasenya" styleClass="inputPass" stylesheets="@../../assets/css/style.css">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="btnLogin" layoutX="75.0" layoutY="293.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="botonLogin" stylesheets="@../../assets/css/style.css" text="Entrar">
+            <Button fx:id="btnLogin" layoutX="75.0" layoutY="293.0" mnemonicParsing="false" onAction="#irMenu" prefHeight="45.0" prefWidth="300.0" styleClass="botonLogin" stylesheets="@../../assets/css/style.css" text="Entrar">
                <font>
                   <Font size="14.0" />
                </font>

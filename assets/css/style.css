@@ -12,7 +12,7 @@ and open the template in the editor.
 .panelImagen {
     -fx-background-color: white;
 }
-.panelLogin, .panelRegistro {
+.panelLogin, .panelRegistro, .panelMenu {
     -fx-background-color: #76bd43;
 }
 .inputUser, .inputPass {
@@ -34,6 +34,11 @@ and open the template in the editor.
 .botonLogin:hover, .botonRegistro:hover, .botonVolver:hover {
     -fx-border-color: #d8d8d8;
     -fx-text-fill: #d8d8d8;
+}
+
+.txtMenu {
+    -fx-font-size: 30px;
+    -fx-text-fill: #146092;  
 }
 
  
