@@ -7,6 +7,9 @@ and open the template in the editor.
     Created on : 15-abr-2020, 17:31:05
     Author     : Marcos
 */
+.botonCerrar:hover {
+    -fx-text-fill: white;    
+}
 
 /* Estilos view inicio */
 .panelImagen {
@@ -41,4 +44,3 @@ and open the template in the editor.
     -fx-text-fill: #146092;  
 }
 
- 

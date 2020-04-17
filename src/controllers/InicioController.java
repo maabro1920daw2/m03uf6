@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -69,6 +70,11 @@ public class InicioController implements Initializable {
         imgLogo.setImage(new Image ("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/img/logo_375x210px.png"));
         tipoUsuario.setItems(tipos);
     }
+    
+    @FXML
+    private void cerrarPrograma(MouseEvent event) {
+        System.exit(0);
+    }
 
     @FXML
     private void irRegistro(MouseEvent event) {
@@ -86,10 +92,9 @@ public class InicioController implements Initializable {
 
     @FXML
     public void irMenu(ActionEvent event) throws IOException {
-        Parent menuViewParent = FXMLLoader.load(getClass().getResource("/views/menu.fxml"));
+        Parent menuViewParent = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
         Scene menuViewScene = new Scene(menuViewParent);
         menuViewScene.getStylesheets().clear();
-        menuViewScene.getStylesheets().add("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/css/style.css");
         
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(menuViewScene);

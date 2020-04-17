@@ -7,7 +7,10 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -16,6 +19,9 @@ import javafx.fxml.Initializable;
  */
 public class MenuController implements Initializable {
 
+    @FXML
+    private AnchorPane menuPrincipal;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +29,10 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void cerrarPrograma(MouseEvent event) {
+        System.exit(0);
+    }
     
 }

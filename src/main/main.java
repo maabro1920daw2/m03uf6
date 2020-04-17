@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 /**
  *
  * @author >Victor
@@ -38,13 +39,17 @@ public class main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/inicio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/InicioView.fxml"));
 
         Scene scene = new Scene(root);
         scene.getStylesheets().clear();
-        scene.getStylesheets().add("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/css/style.css");
+        //scene.getStylesheets().add("style.css");
+        stage.initStyle( StageStyle.UNDECORATED );
         stage.setScene(scene);
         stage.show();
+        
+        
+        
     }
     /*private void conectarDatabase() throws SQLException {
         try {
