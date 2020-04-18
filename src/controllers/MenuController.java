@@ -5,12 +5,15 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -20,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 public class MenuController implements Initializable {
 
     @FXML
-    private AnchorPane menuPrincipal;
+    private BorderPane mainPane;
 
     /**
      * Initializes the controller class.
@@ -31,8 +34,15 @@ public class MenuController implements Initializable {
     }    
 
     @FXML
-    private void cerrarPrograma(MouseEvent event) {
-        System.exit(0);
+    private void cambioEscena1(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Escena1.fxml"));
+        mainPane.setCenter(root);
+    }
+
+    @FXML
+    private void cambioEscena2(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Escena2.fxml"));
+        mainPane.setCenter(root);
     }
     
 }
