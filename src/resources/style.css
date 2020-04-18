@@ -8,7 +8,11 @@ and open the template in the editor.
     Author     : Marcos
 */
 .botonCerrar:hover {
-    -fx-text-fill: white;    
+    -fx-fill: white;   
+}
+
+.botonCerrar {
+    -fx-fill: red;
 }
 
 /* Estilos view inicio */
