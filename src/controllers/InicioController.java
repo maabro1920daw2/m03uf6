@@ -5,9 +5,15 @@
  */
 package controllers;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import javafx.util.Duration;
 import java.util.ResourceBundle;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +31,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -55,7 +62,7 @@ public class InicioController implements Initializable {
     @FXML
     private Button btnRegistro;
     @FXML
-    private Button btnVolver;
+    private FontAwesomeIconView btnVolver;
     @FXML
     private Pane panelInicio;
     @FXML
@@ -92,13 +99,32 @@ public class InicioController implements Initializable {
 
     @FXML
     public void irMenu(ActionEvent event) throws IOException {
-        Parent menuViewParent = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
+        /*Parent menuViewParent = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
         Scene menuViewScene = new Scene(menuViewParent);
         menuViewScene.getStylesheets().clear();
         
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(menuViewScene);
-        window.show();
+        window.show();*/
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
+        Scene scene = btnLogin.getScene();
+        root.translateXProperty().set(scene.getWidth());
+
+        AnchorPane parentContainer = (AnchorPane) btnLogin.getScene().getRoot();
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(content_area);
+        });
+        timeline.play();
+        
+        
     }
     
 }

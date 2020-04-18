@@ -7,26 +7,32 @@ and open the template in the editor.
     Created on : 15-abr-2020, 17:31:05
     Author     : Marcos
 */
-.botonCerrar:hover {
-    -fx-fill: white;   
+.botonCerrar, .botonVolver {
+    -fx-fill: #146092;   
 }
-
-.botonCerrar {
-    -fx-fill: red;
+.botonCerrar:hover, .botonVolver:hover {
+    -fx-fill: #d8d8d8;
 }
-
 /* Estilos view inicio */
+.panelInicio, .panelMenu {
+    -fx-pref-width: 900px;
+    -fx-pref-height: 600px;
+}
 .panelImagen {
     -fx-background-color: white;
+    -fx-pref-width: 450px;
+    -fx-pref-height: 600px;
 }
-.panelLogin, .panelRegistro, .panelMenu {
+.panelLogin, .panelRegistro {
     -fx-background-color: #76bd43;
+    -fx-pref-width: 450px;
+    -fx-pref-height: 600px;
 }
 .inputUser, .inputPass {
     -fx-font-size: 14px;
     -fx-font-family: Arial, sans-serif;
 }
-.botonLogin, .botonRegistro, .botonVolver {
+.botonLogin, .botonRegistro {
     -fx-padding: 5 22 5 22;   
     -fx-border-color: #146092;
     -fx-border-width: 2;
@@ -46,5 +52,9 @@ and open the template in the editor.
 .txtMenu {
     -fx-font-size: 30px;
     -fx-text-fill: #146092;  
+}
+/* Estilos menu neavegacion */
+.panelMenu {
+    -fx-background-color: #76bd43;   
 }
 
