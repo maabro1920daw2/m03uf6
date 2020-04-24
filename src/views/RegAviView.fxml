@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="registroAvis" stylesheets="@../resources/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controllers.RegAviViewController">
+   <children>
+      <FontAwesomeIconView glyphName="TIMES" onMouseClicked="#cerrarPrograma" size="20" styleClass="botonCerrar" x="728.0" y="20.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <TextField fx:id="nomAvi" layoutX="60.0" layoutY="151.0" promptText="Nom" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <TextField fx:id="edatAvi" layoutX="580.0" layoutY="151.0" prefHeight="0.0" promptText="Edat" styleClass="inputEdatAvi" stylesheets="@../resources/style.css" />
+      <Label layoutX="60.0" layoutY="42.0" styleClass="textRegistreAvis" stylesheets="@../resources/style.css" text="Registrar avi" />
+      <TextField fx:id="cognomAvi" layoutX="320.0" layoutY="151.0" promptText="Cognoms" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <TextField fx:id="telefonAvi" layoutX="60.0" layoutY="200.0" promptText="Telefon" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <TextField fx:id="falimiarAvi" layoutX="320.0" layoutY="200.0" promptText="Telefon familiar" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <Button fx:id="btnGuardarAvi" layoutX="60.0" layoutY="413.0" mnemonicParsing="false" styleClass="botonRegistro" text="Guardar" />
+      <TextField fx:id="minusvaliaAvi" layoutX="60.0" layoutY="306.0" promptText="Minusvalia" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <Label layoutX="60.0" layoutY="107.0" styleClass="labelDades" stylesheets="@../resources/style.css" text="Dades de l'avi" />
+      <Label layoutX="60.0" layoutY="260.0" styleClass="labelDades" stylesheets="@../resources/style.css" text="Altres dades" />
+   </children>
+</AnchorPane>

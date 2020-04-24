@@ -8,7 +8,8 @@ and open the template in the editor.
     Author     : Marcos
 */
 .botonCerrar, .botonVolver {
-    -fx-fill: #146092;   
+    -fx-fill: #146092; 
+    -fx-size: 20;
 }
 .botonCerrar:hover, .botonVolver:hover {
     -fx-fill: #d8d8d8;
@@ -49,12 +50,73 @@ and open the template in the editor.
     -fx-text-fill: #d8d8d8;
 }
 
-.txtMenu {
-    -fx-font-size: 30px;
-    -fx-text-fill: #146092;  
-}
 /* Estilos menu neavegacion */
 .panelMenu {
+    -fx-pref-width: 900px;
+    -fx-pref-height: 600px;
     -fx-background-color: #76bd43;   
 }
-
+.sidebarMenu {
+    -fx-background-color: white;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 600px;
+}
+.botonMenu {
+    -fx-text-fill: #146092;
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 35px;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0 0 20;
+}
+.botonMenu:hover {
+    -fx-background-color: rgba(51, 51, 51, 0.26);
+    -fx-background-radius: 0;
+}
+.icoMenu {
+    -fx-fill: #146092; 
+}
+.txtMenu {
+    -fx-font-size: 17px;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 5 10;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #146092;
+    -fx-pref-width: 150px;
+}
+/* Avis */
+.registroAvis {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 600px;
+    -fx-background-color: #76bd43; 
+}
+.textRegistreAvis {
+    -fx-font-size: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
+}
+.labelDades {
+    -fx-pref-width: 650;
+    -fx-font-size: 20;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #146092;
+}
+.inputNombreAvi {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 250;
+    -fx-pref-height: 40;
+}
+.inputEdatAvi {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 70;
+    -fx-pref-height: 40;    
+}

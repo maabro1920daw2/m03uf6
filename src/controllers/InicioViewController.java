@@ -5,9 +5,11 @@
  */
 package controllers;
 
+import database.Utilitat;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import javafx.util.Duration;
 import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
@@ -40,7 +42,7 @@ import javafx.stage.StageStyle;
  *
  * @author Marcos
  */
-public class InicioController implements Initializable {
+public class InicioViewController implements Initializable {
     @FXML
     private ImageView imgLogo;
     @FXML
@@ -98,33 +100,31 @@ public class InicioController implements Initializable {
     }
 
     @FXML
-    public void irMenu(ActionEvent event) throws IOException {
-        /*Parent menuViewParent = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
-        Scene menuViewScene = new Scene(menuViewParent);
-        menuViewScene.getStylesheets().clear();
+    public void irMenu(ActionEvent event) throws IOException, SQLException {
+        Utilitat u = new Utilitat();
         
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(menuViewScene);
-        window.show();*/
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
-        Scene scene = btnLogin.getScene();
-        root.translateXProperty().set(scene.getWidth());
+        String usuario = nombreUsuario.getText();
+        String password = passwordUsuario.getText();
+            
+        if(true){
+            Parent root = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
+            Scene scene = btnLogin.getScene();
+            root.translateXProperty().set(scene.getWidth());
 
-        AnchorPane parentContainer = (AnchorPane) btnLogin.getScene().getRoot();
+            AnchorPane parentContainer = (AnchorPane) btnLogin.getScene().getRoot();
 
-        parentContainer.getChildren().add(root);
+            parentContainer.getChildren().add(root);
 
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(content_area);
-        });
-        timeline.play();
-        
-        
-    }
-    
+            Timeline timeline = new Timeline();
+            KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+            timeline.getKeyFrames().add(kf);
+            timeline.setOnFinished(t -> {
+                parentContainer.getChildren().remove(content_area);
+            });                
+            timeline.play();            
+        }else{
+            
+        }    
+    }   
 }

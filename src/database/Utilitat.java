@@ -20,7 +20,7 @@ public class Utilitat {
     private PreparedStatement preparedStatement = null;
     private Statement statement = null;
 
-    private void conectarDatabase() throws SQLException {
+    public void conectarDatabase() throws SQLException {
         try {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
