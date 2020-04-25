@@ -89,12 +89,12 @@ and open the template in the editor.
     -fx-pref-width: 150px;
 }
 /* Avis */
-.registroAvis {
+.registroAvis, .modificarAvis {
     -fx-pref-width: 750px;
     -fx-pref-height: 600px;
     -fx-background-color: #76bd43; 
 }
-.textRegistreAvis {
+.textRegistreAvis, .textModificaAvis {
     -fx-font-size: 30;
     -fx-text-fill: #146092;
     -fx-font-weight: bold;   
@@ -111,12 +111,133 @@ and open the template in the editor.
 .inputNombreAvi {
     -fx-font-size: 14;
     -fx-font-family: Arial, sans-serif;   
-    -fx-pref-width: 250;
-    -fx-pref-height: 40;
+    -fx-pref-width: 320;
+    -fx-pref-height: 30;
 }
 .inputEdatAvi {
     -fx-font-size: 14;
     -fx-font-family: Arial, sans-serif;   
     -fx-pref-width: 70;
-    -fx-pref-height: 40;    
+    -fx-pref-height: 30;    
+}
+.inputBuscarAvi {
+    -fx-font-size: 13;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 450;
+    -fx-pref-height: 30;    
+}
+.table-view .column-header {
+    -fx-background-color: #0d6a38;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-padding: 10 0 10 0;
+}
+.table-view, .table-view:focused {
+  -fx-background-color: transparent,-fx-box-border,-fx-control-inner-background;
+  -fx-background-insets: -1.4, 0, 1;
+  -fx-background-radius: 1.4, 0, 0;
+}
+
+/* Espais */
+.registroEspais, .modificarEspais {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 600px;
+    -fx-background-color: #76bd43; 
+}
+.textRegistreEspais, .textModificaEspais {
+    -fx-font-size: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
+}
+.labelEspais {
+    -fx-pref-width: 650;
+    -fx-font-size: 20;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #146092;
+}
+.inputDades {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 650;
+    -fx-pref-height: 30;
+}
+.inputAltres {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 320;
+    -fx-pref-height: 30;  
+}
+.textAdaptat {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 70;
+    -fx-pref-height: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+}
+.radioButton {
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+}
+.inputBuscarEspai {
+    -fx-font-size: 13;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 450;
+    -fx-pref-height: 30;    
+}
+/* Usuaris */
+.registroUsuaris, .modificarUsuaris {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 600px;
+    -fx-background-color: #76bd43; 
+}
+.textRegistreUsuaris, .textModificaUsuaris {
+    -fx-font-size: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
+}
+.labelUsuaris {
+    -fx-pref-width: 650;
+    -fx-font-size: 20;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #146092;
+}
+.inputNombreUsuari {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 320;
+    -fx-pref-height: 30;
+}
+.inputBuscarUsuari {
+    -fx-font-size: 13;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 450;
+    -fx-pref-height: 30;    
+}
+/* Historial */
+.cercarHistorial {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 600px;
+    -fx-background-color: #76bd43; 
+}
+.textCercarHistorial {
+    -fx-font-size: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
+}
+.txtDates {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
 }

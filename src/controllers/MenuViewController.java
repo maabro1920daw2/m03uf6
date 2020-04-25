@@ -39,7 +39,9 @@ public class MenuViewController implements Initializable {
     }
 
     @FXML
-    private void regUsuari(MouseEvent event) {
+    private void regUsuari(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/RegUsuariView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML
@@ -47,7 +49,9 @@ public class MenuViewController implements Initializable {
     }
 
     @FXML
-    private void cerUsuari(MouseEvent event) {
+    private void cerUsuari(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/LlistaUsuarisView.fxml"));
+        mainPane.setCenter(root);
     }
     
     @FXML
@@ -61,11 +65,15 @@ public class MenuViewController implements Initializable {
     }
 
     @FXML
-    private void cerAvi(MouseEvent event) {
+    private void cerAvi(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/LlistaAvisView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML
-    private void regEspai(MouseEvent event) {
+    private void regEspai(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/RegEspaiView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML
@@ -73,11 +81,15 @@ public class MenuViewController implements Initializable {
     }
 
     @FXML
-    private void cerEspai(MouseEvent event) {
+    private void cerEspai(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/LlistaEspaisView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML
-    private void mosHistorial(MouseEvent event) {
+    private void mosHistorial(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/HistorialView.fxml"));
+        mainPane.setCenter(root);
     }
     
 }
