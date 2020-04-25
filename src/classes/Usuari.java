@@ -9,9 +9,9 @@ package classes;
  *
  * @author marco
  */
-public class Usuari {
+abstract public class Usuari {
     protected int codiUsuari;
-    protected String nomUsuari, passUsuari;
+    protected String nomUsuari, passUsuari, tipus;
    
     public Usuari() {}
     
@@ -19,6 +19,7 @@ public class Usuari {
         this.codiUsuari = codiUsuari;
         this.nomUsuari = nomUsuari;
         this.passUsuari = passUsuari;
+        this.tipus = this.getClass().getSimpleName();
     }
     
     public void afegirAvi() {}
@@ -43,6 +44,14 @@ public class Usuari {
 
     public String getNomUsuari() {
         return nomUsuari;
+    }
+
+    public String getTipus() {
+        return tipus;
+    }
+
+    public void setTipus(String tipus) {
+        this.tipus = tipus;
     }
 
     public void setNomUsuari(String nomUsuari) {

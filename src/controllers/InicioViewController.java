@@ -91,6 +91,15 @@ public class InicioViewController implements Initializable {
             panelRegistro.toFront();
         }
     }
+      @FXML
+    private void registrarUsuario(MouseEvent event) throws SQLException {
+        if(event.getSource().equals(btnRegistro)){
+            Utilitat u= new Utilitat();
+            
+            u.registrar2(nombreUsuario.getText(), passwordUsuario.getText(), tipoUsuario.getValue());
+            
+        }
+    }
 
     @FXML
     private void irLogin(MouseEvent event) {
@@ -103,10 +112,10 @@ public class InicioViewController implements Initializable {
     public void irMenu(ActionEvent event) throws IOException, SQLException {
         Utilitat u = new Utilitat();
         
-        String usuario = nombreUsuario.getText();
-        String password = passwordUsuario.getText();
+        String usuario = loginName.getText();
+        String password = loginPass.getText();
             
-        if(true){
+        if(u.login(usuario,password)){
             Parent root = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
             Scene scene = btnLogin.getScene();
             root.translateXProperty().set(scene.getWidth());

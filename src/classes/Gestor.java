@@ -16,7 +16,8 @@ public class Gestor extends Usuari {
     
     public Gestor(int codiUsuari, String nomUsuari, String passUsuari) {
         super(codiUsuari,nomUsuari,passUsuari);
-    }
+      
+            }
     
     public void sugerirLloc() {}
 }

@@ -13,6 +13,7 @@ import enumerations.Minusvalia;
  */
 public class Avi {
     private String nom;
+    private Espai espai, sugeriment;
     private int codiAvi, edat, numTelefon, telefonFamiliar;
     private Minusvalia minusvalia;
     

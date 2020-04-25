@@ -36,7 +36,7 @@
                </font>
             </TextField>
             <ComboBox fx:id="tipoUsuario" layoutX="75.0" layoutY="305.0" prefHeight="40.0" prefWidth="300.0" promptText="Selecciona un tipus d'empleat" stylesheets="@../resources/style.css" />
-            <Button fx:id="btnRegistro" layoutX="75.0" layoutY="374.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Registrar">
+            <Button fx:id="btnRegistro" onMouseClicked="#registrarUsuario" layoutX="75.0" layoutY="374.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Registrar">
                <font>
                   <Font size="14.0" />
                </font>
