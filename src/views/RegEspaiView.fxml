@@ -6,8 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="registroEspais" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegEspaiViewController">
    <children>
@@ -25,8 +25,11 @@
       <TextField fx:id="menajdorsEspai" layoutX="30.0" layoutY="295.0" promptText="Numero de menjadors" styleClass="inputAltres" stylesheets="@../resources/style.css" />
       <TextField fx:id="habitacionsEspais" layoutX="360.0" layoutY="295.0" promptText="Numero de habitacions" styleClass="inputAltres" stylesheets="@../resources/style.css" />
       <Label layoutX="30.0" layoutY="204.0" styleClass="textAdaptat" stylesheets="@../resources/style.css" text="Adaptat:" />
-      <RadioButton layoutX="106.0" layoutY="211.0" mnemonicParsing="false" styleClass="radioButton" stylesheets="@../resources/style.css" text="Si" />
-      <RadioButton layoutX="149.0" layoutY="211.0" mnemonicParsing="false" styleClass="radioButton" text="No" />
+      <RadioButton fx:id="opSi" layoutX="106.0" layoutY="211.0" mnemonicParsing="false" styleClass="radioButton" stylesheets="@../resources/style.css" text="Si">
+         <toggleGroup>
+            <ToggleGroup fx:id="AdaptatGp" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="opNo" layoutX="149.0" layoutY="211.0" mnemonicParsing="false" styleClass="radioButton" text="No" toggleGroup="$AdaptatGp" />
       <Button layoutX="30.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Guardar">
          <cursor>
             <Cursor fx:constant="HAND" />

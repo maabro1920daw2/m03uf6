@@ -7,11 +7,13 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -19,37 +21,33 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Marcos
  */
-public class RegEspaiViewController implements Initializable {
+public class ModificarUsuariViewController implements Initializable {
 
     @FXML
-    private TextField localitzacioEspai;
+    private TextField modNom;
     @FXML
-    private TextField superficieEspai;
+    private TextField modCognoms;
     @FXML
-    private TextField salesEspai;
+    private TextField modTelefon;
     @FXML
-    private TextField menajdorsEspai;
+    private TextField modLogin;
     @FXML
-    private TextField habitacionsEspais;
+    private PasswordField modContrasenya;
     @FXML
-    private RadioButton opSi;
-    @FXML
-    private ToggleGroup AdaptatGp;
-    @FXML
-    private RadioButton opNo;
+    private ComboBox<String> modTipus;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        opSi.setToggleGroup(AdaptatGp);
-        opNo.setToggleGroup(AdaptatGp);
+        ObservableList<String> tipos = FXCollections.observableArrayList();
+        tipos.addAll("Coordinador", "Gestor", "Corrent");
+        modTipus.setItems(tipos);
     }    
 
     @FXML
     private void cerrarPrograma(MouseEvent event) {
-        System.exit(0);
     }
     
 }

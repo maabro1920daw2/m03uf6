@@ -5,13 +5,16 @@
  */
 package controllers;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -19,32 +22,31 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Marcos
  */
-public class RegEspaiViewController implements Initializable {
+public class ModificarAviViewController implements Initializable {
 
     @FXML
-    private TextField localitzacioEspai;
+    private TextField modNom;
     @FXML
-    private TextField superficieEspai;
+    private TextField modCognoms;
     @FXML
-    private TextField salesEspai;
+    private TextField modEdat;
     @FXML
-    private TextField menajdorsEspai;
+    private TextField modTelefon;
     @FXML
-    private TextField habitacionsEspais;
+    private TextField modFamiliar;
     @FXML
-    private RadioButton opSi;
+    private ComboBox<String> modTipus;
     @FXML
-    private ToggleGroup AdaptatGp;
-    @FXML
-    private RadioButton opNo;
+    private Button btnGuardar;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        opSi.setToggleGroup(AdaptatGp);
-        opNo.setToggleGroup(AdaptatGp);
+        ObservableList<String> tipos = FXCollections.observableArrayList();
+        tipos.addAll("FISICA", "PSIQUICA");
+        modTipus.setItems(tipos);
     }    
 
     @FXML

@@ -7,9 +7,12 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -33,14 +36,16 @@ public class RegAviViewController implements Initializable {
     @FXML
     private Button btnGuardarAvi;
     @FXML
-    private TextField minusvaliaAvi;
+    private ComboBox<String> selectMinusvalia;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        ObservableList<String> tipos = FXCollections.observableArrayList();
+        tipos.addAll("FISICA", "PSIQUICA");
+        selectMinusvalia.setItems(tipos);
     }    
 
     @FXML

@@ -16,6 +16,7 @@ public class Avi {
     private Espai espai, sugeriment;
     private int codiAvi, edat, numTelefon, telefonFamiliar;
     private Minusvalia minusvalia;
+    private boolean sugerit, aprovat;
     
     public Avi() {}
 

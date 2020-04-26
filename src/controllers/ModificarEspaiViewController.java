@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -19,32 +20,36 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Marcos
  */
-public class RegEspaiViewController implements Initializable {
+public class ModificarEspaiViewController implements Initializable {
 
     @FXML
-    private TextField localitzacioEspai;
+    private TextField modNom;
     @FXML
-    private TextField superficieEspai;
+    private TextField modLocalitzacio;
     @FXML
-    private TextField salesEspai;
+    private TextField modSuperficie;
     @FXML
-    private TextField menajdorsEspai;
-    @FXML
-    private TextField habitacionsEspais;
+    private TextField modSales;
     @FXML
     private RadioButton opSi;
     @FXML
-    private ToggleGroup AdaptatGp;
+    private ToggleGroup gpAdaptat;
     @FXML
     private RadioButton opNo;
+    @FXML
+    private TextField modMenjadors;
+    @FXML
+    private TextField modHabitacions;
+    @FXML
+    private Button btnGuardar;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        opSi.setToggleGroup(AdaptatGp);
-        opNo.setToggleGroup(AdaptatGp);
+        opSi.setToggleGroup(gpAdaptat);
+        opNo.setToggleGroup(gpAdaptat);
     }    
 
     @FXML

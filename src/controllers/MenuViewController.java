@@ -5,15 +5,24 @@
  */
 package controllers;
 
+import database.Utilitat;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -21,9 +30,12 @@ import javafx.scene.layout.BorderPane;
  * @author Marcos
  */
 public class MenuViewController implements Initializable {
-
+    private boolean coord=false,gestor=false;
     @FXML
     private BorderPane mainPane;
+    
+    @FXML
+    private Button regUser,modUser,cerUser;
 
     /**
      * Initializes the controller class.
@@ -91,5 +103,28 @@ public class MenuViewController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/views/HistorialView.fxml"));
         mainPane.setCenter(root);
     }
+
+    @FXML
+    private void sugEspai(MouseEvent event) throws IOException {
+        Utilitat u = new Utilitat();
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SuggerirEspaiView.fxml"));
+            Parent root = loader.load();
+
+            SuggerirEspaiViewController s = loader.getController();
+
+            s.whatTipus(coord,gestor);
+
+            mainPane.setCenter(root);
+    }
     
+    @FXML
+    public void isCoordinador(boolean message,boolean m2){
+        coord=message;
+        gestor=m2;
+        if(!coord){
+            regUser.setDisable(true);
+            modUser.setDisable(true);
+            cerUser.setDisable(true);
+        }
+    }
 }

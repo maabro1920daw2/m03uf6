@@ -33,7 +33,7 @@ public class Utilitat {
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "");
+            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
         } catch (SQLException sqle) {
             System.out.println("Error: " + sqle);
         }
@@ -64,13 +64,13 @@ public class Utilitat {
             return false;
         }
     }
-    
+
     public void borrarUsuari(int id) throws SQLException {
         this.conectarDatabase();
-        try{
+        try {
             this.statement = this.connect.createStatement();
-            statement.executeUpdate("DELETE FROM usuaris where id='" + id+"'");           
-        }catch(SQLException ex){
+            statement.executeUpdate("DELETE FROM usuaris where id='" + id + "'");
+        } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
     }
@@ -134,12 +134,12 @@ public class Utilitat {
         this.statement = this.connect.createStatement();
         this.resultSet = statement.executeQuery("SELECT * FROM usuaris");
         while (resultSet.next()) {
-            if (resultSet.getString("tipus").equalsIgnoreCase( "coordinador")) {
-                o.add(new Coordinador(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("cognoms"),resultSet.getString("telefon"),resultSet.getString("login"),resultSet.getString("contrasenya")));
-            } else if (resultSet.getString("tipus").equalsIgnoreCase( "gestor")) {
-                o.add(new Gestor(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("cognoms"),resultSet.getString("telefon"),resultSet.getString("login"),resultSet.getString("contrasenya")));
+            if (resultSet.getString("tipus").equalsIgnoreCase("coordinador")) {
+                o.add(new Coordinador(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
+            } else if (resultSet.getString("tipus").equalsIgnoreCase("gestor")) {
+                o.add(new Gestor(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
             } else {
-                o.add(new Corrent(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("cognoms"),resultSet.getString("telefon"),resultSet.getString("login"),resultSet.getString("contrasenya")));
+                o.add(new Corrent(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
             }
         }
         this.resultSet.close();
@@ -194,12 +194,47 @@ public class Utilitat {
         this.conectarDatabase();
         try {
             this.statement = this.connect.createStatement();
-            this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='" + user + "' and contrasenya='" + pass+"'");
+            this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='" + user + "' and contrasenya='" + pass + "'");
             return this.resultSet.isBeforeFirst();
         } catch (SQLIntegrityConstraintViolationException sqle) {
             System.out.println("El codi ja esta introduit. Prova un altre.");
             return false;
         }
+    }
+
+    public boolean coordinador(String user) throws SQLException {
+        this.conectarDatabase();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='" + user + "'");
+        while (resultSet.next()) {
+            if (resultSet.getString("tipus").equalsIgnoreCase("coordinador")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return false;
+    }
+
+    public boolean gestor(String user) throws SQLException {
+
+        this.conectarDatabase();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='" + user + "'");
+        while (resultSet.next()) {
+            if (resultSet.getString("tipus").equalsIgnoreCase("gestor")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return false;
     }
 
 }

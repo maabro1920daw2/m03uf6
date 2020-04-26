@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,9 +22,9 @@
       <TextField fx:id="telefonAvi" layoutX="30.0" layoutY="161.0" promptText="Telefon" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
       <TextField fx:id="falimiarAvi" layoutX="30.0" layoutY="204.0" promptText="Telefon familiar" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
       <Button fx:id="btnGuardarAvi" layoutX="30.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" text="Guardar" />
-      <TextField fx:id="minusvaliaAvi" layoutX="30.0" layoutY="296.0" promptText="Minusvalia" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
       <Label layoutX="30.0" layoutY="72.0" styleClass="labelDades" stylesheets="@../resources/style.css" text="Dades de l'avi" />
       <Label layoutX="30.0" layoutY="248.0" styleClass="labelDades" stylesheets="@../resources/style.css" text="Altres dades" />
       <Label layoutX="30.0" layoutY="342.0" styleClass="labelDades" stylesheets="@../resources/style.css" text="Espais" />
+      <ComboBox fx:id="selectMinusvalia" layoutX="30.0" layoutY="296.0" prefWidth="150.0" promptText="Minusvalia" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
    </children>
 </AnchorPane>

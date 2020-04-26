@@ -179,7 +179,8 @@ and open the template in the editor.
     -fx-font-size: 14;
     -fx-font-family: Arial, sans-serif;   
     -fx-pref-width: 320;
-    -fx-pref-height: 30;  
+    -fx-pref-height: 30;
+    -fx-font-weight: normal;
 }
 .textAdaptat {
     -fx-font-size: 14;
@@ -270,4 +271,44 @@ and open the template in the editor.
     -fx-pref-height: 30;
     -fx-text-fill: #146092;
     -fx-font-weight: bold;   
+}
+/* Suggerir */
+.panelSuggerir {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 600px;
+    -fx-background-color: #76bd43;
+}
+.paneSugCoordinador, .paneSugGestor {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 480px;
+    -fx-background-color: #76bd43;
+}
+.panelSugGestor {
+
+    -fx-background-color: #76bd43;    
+}
+.textSuggerir {
+    -fx-font-size: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
+}
+.labelDates {
+    -fx-font-size: 14;
+    -fx-font-family: Arial, sans-serif;   
+    -fx-pref-width: 150;
+    -fx-pref-height: 30;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;   
+}
+.inputSuggeriments {
+    -fx-pref-width: 320;
+    -fx-pref-height: 30;
+    -fx-font-size: 14;
+}
+.inputData {
+    -fx-pref-width: 250;   
+}
+.tablaSuggeriment {
+    -fx-pref-width: 690;
+    -fx-pref-height: 390;
 }

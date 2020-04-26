@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="modificarEspais" stylesheets="@../resources/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controllers.ModificarEspaiViewController">
+   <children>
+      <FontAwesomeIconView glyphName="TIMES" layoutX="728.0" layoutY="20.0" onMouseClicked="#cerrarPrograma" size="20" styleClass="botonCerrar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <Label layoutX="30.0" layoutY="20.0" styleClass="textModificaEspais" stylesheets="@../resources/style.css" text="Modificar un espai" />
+      <TextField fx:id="modNom" layoutX="30.0" layoutY="78.0" promptText="Nom de l'espai" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <Label layoutX="30.0" layoutY="127.0" styleClass="labelEspais" stylesheets="@../resources/style.css" text="Dades a modificar" />
+      <TextField fx:id="modLocalitzacio" layoutX="30.0" layoutY="172.0" promptText="Localització" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <TextField fx:id="modSuperficie" layoutX="360.0" layoutY="172.0" promptText="Superficie" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <TextField fx:id="modSales" layoutX="30.0" layoutY="215.0" promptText="Nombre de sales" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <Label layoutX="360.0" layoutY="215.0" styleClass="textAdaptat" text="Adaptat:" />
+      <RadioButton fx:id="opSi" layoutX="430.0" layoutY="222.0" mnemonicParsing="false" styleClass="radioButton" stylesheets="@../resources/style.css" text="Si">
+         <toggleGroup>
+            <ToggleGroup fx:id="gpAdaptat" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="opNo" layoutX="477.0" layoutY="222.0" mnemonicParsing="false" styleClass="radioButton" stylesheets="@../resources/style.css" text="No" toggleGroup="$gpAdaptat" />
+      <TextField fx:id="modMenjadors" layoutX="30.0" layoutY="259.0" promptText="Num. Menjadors" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <TextField fx:id="modHabitacions" layoutX="360.0" layoutY="259.0" promptText="Num. Habitacions" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <Button fx:id="btnGuardar" layoutX="30.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Guardar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
