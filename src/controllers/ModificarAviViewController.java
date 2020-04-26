@@ -38,6 +38,8 @@ public class ModificarAviViewController implements Initializable {
     private ComboBox<String> modTipus;
     @FXML
     private Button btnGuardar;
+    @FXML
+    private TextField idAvi;
 
     /**
      * Initializes the controller class.

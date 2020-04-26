@@ -57,7 +57,9 @@ public class MenuViewController implements Initializable {
     }
 
     @FXML
-    private void modUsuari(MouseEvent event) {
+    private void modUsuari(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/ModificarUsuariView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML
@@ -73,7 +75,9 @@ public class MenuViewController implements Initializable {
     }
     
     @FXML
-    private void modAvi(MouseEvent event) {
+    private void modAvi(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/ModificarAviView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML
@@ -89,7 +93,9 @@ public class MenuViewController implements Initializable {
     }
 
     @FXML
-    private void modEspai(MouseEvent event) {
+    private void modEspai(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/ModificarEspaiView.fxml"));
+        mainPane.setCenter(root);
     }
 
     @FXML

@@ -55,10 +55,6 @@ public class LlistaUsuarisViewController implements Initializable {
     @FXML
     private TableColumn colTipus;
     @FXML
-    private TableColumn colBorrar;
-    @FXML
-    private Button editarUsuari;
-    @FXML
     private Button borrarUsuari;
 
     /**
