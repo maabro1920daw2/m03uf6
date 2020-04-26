@@ -16,6 +16,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </FontAwesomeIconView>
+      <AnchorPane fx:id="gestorPanel" prefHeight="200.0" prefWidth="400.0" styleClass="panelSuggerir" stylesheets="@../resources/style.css" >
       <Label layoutX="30.0" layoutY="20.0" styleClass="textSuggerir" stylesheets="@../resources/style.css" text="Suggerir espai" />
       <TextField fx:id="codiAvi" layoutX="30.0" layoutY="81.0" promptText="Codi identificatiu de l'avi" styleClass="inputAltres" stylesheets="@../resources/style.css" />
       <TextField fx:id="codiEspai" layoutX="360.0" layoutY="81.0" promptText=" Codi identificatiu espai" styleClass="inputAltres" stylesheets="@../resources/style.css" />
@@ -29,6 +30,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      </AnchorPane>
+      <AnchorPane fx:id="coordPanel" prefHeight="200.0" prefWidth="400.0" styleClass="panelSuggerir" stylesheets="@../resources/style.css" >
       <Button fx:id="btnValidar" layoutX="30.0" layoutY="458.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Validar">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -45,5 +48,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -219,5 +219,22 @@ public class Utilitat {
         this.connect.close();
         return false;
     }
+    public boolean gestor(String user) throws SQLException{
+         
+        this.conectarDatabase();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='"+user+"'");
+        while (resultSet.next()) {
+            if (resultSet.getString("tipus").equalsIgnoreCase( "gestor")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return false;
+    }
 
 }

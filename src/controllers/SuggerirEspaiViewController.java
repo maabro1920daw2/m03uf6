@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -20,7 +21,7 @@ import javafx.scene.input.MouseEvent;
  * @author Marcos
  */
 public class SuggerirEspaiViewController implements Initializable {
-
+    private boolean coord,gestor;
     @FXML
     private TextField codiAvi;
     @FXML
@@ -37,18 +38,40 @@ public class SuggerirEspaiViewController implements Initializable {
     private Button btnDenegar;
     @FXML
     private Button btnReformular;
+    @FXML
+    private AnchorPane coordPanel,gestorPanel;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        mostrar();
     }    
 
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
+    }
+    
+    @FXML
+    private void mostrar() {
+        
+       if(coord){
+           gestorPanel.setVisible(false);
+           
+       }
+       if(gestor){
+           coordPanel.setVisible(false);
+       }
+    }
+    
+     @FXML
+    public void whatTipus(boolean c,boolean g){
+        System.out.println("hola");
+        coord=c;
+        gestor=g;
+         mostrar();
     }
     
 }
