@@ -49,6 +49,15 @@ and open the template in the editor.
     -fx-border-color: #d8d8d8;
     -fx-text-fill: #d8d8d8;
 }
+.errorSesion {
+    -fx-padding: 10 10 10 10;
+    -fx-pref-width: 300px;
+    -fx-border-color: red;
+    -fx-border-width: 2;
+    -fx-font-weight: bold; 
+    -fx-background-color: rgba(255, 15, 15, 0.72);
+    -fx-text-fill: white;
+}
 
 /* Estilos menu neavegacion */
 .panelMenu {
@@ -222,11 +231,32 @@ and open the template in the editor.
     -fx-pref-width: 450;
     -fx-pref-height: 30;    
 }
+.infoSesion {
+    -fx-pref-width: 320;
+    -fx-pref-height: 30;
+    -fx-padding: 10 10 10 10;
+    -fx-text-fill: #146092;
+    -fx-font-weight: bold;
+    -fx-border-width: 2;
+    -fx-border-color: #146092;
+    -fx-font-size: 14;
+}
+.infoError {
+    -fx-pref-width: 320;
+    -fx-pref-height: 30;
+    -fx-padding: 10 10 10 10;
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+    -fx-border-width: 2;
+    -fx-border-color: red;
+    -fx-font-size: 14;   
+}
 /* Historial */
 .cercarHistorial {
     -fx-pref-width: 750px;
     -fx-pref-height: 600px;
-    -fx-background-color: #76bd43; 
+    -fx-background-color: #76bd43;
+    -fx-font-weight: bold;
 }
 .textCercarHistorial {
     -fx-font-size: 30;

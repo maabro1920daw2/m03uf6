@@ -14,8 +14,8 @@ public class Coordinador extends Usuari {
         super();
     }
     
-    public Coordinador(int codiUsuari, String nomUsuari, String passUsuari) {
-        super(codiUsuari,nomUsuari,passUsuari);
+    public Coordinador(int codiUsuari, String nomUsuari, String cognomsUsuari, String telfUsuari, String loginUsuari, String passUsuari) {
+        super(codiUsuari,nomUsuari,cognomsUsuari,telfUsuari,loginUsuari,passUsuari);
     }
     
     public void validarAssignacio() {}

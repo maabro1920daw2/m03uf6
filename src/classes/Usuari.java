@@ -11,13 +11,16 @@ package classes;
  */
 abstract public class Usuari {
     protected int codiUsuari;
-    protected String nomUsuari, passUsuari, tipus;
+    protected String nomUsuari, cognomsUsuari, passUsuari, tipus, loginUsuari, telfUsuari;
    
     public Usuari() {}
     
-    public Usuari(int codiUsuari, String nomUsuari, String passUsuari){
+    public Usuari(int codiUsuari, String nomUsuari, String cognomsUsuari, String telfUsuari, String loginUsuari, String passUsuari){
         this.codiUsuari = codiUsuari;
         this.nomUsuari = nomUsuari;
+        this.cognomsUsuari = cognomsUsuari;
+        this.telfUsuari = telfUsuari;
+        this.loginUsuari = loginUsuari;
         this.passUsuari = passUsuari;
         this.tipus = this.getClass().getSimpleName();
     }
@@ -33,6 +36,30 @@ abstract public class Usuari {
     public void modificarEspai() {}
     
     public void eliminarEspai() {}
+
+    public String getTelfUsuari() {
+        return telfUsuari;
+    }
+
+    public void setTelfUsuari(String telfUsuari) {
+        this.telfUsuari = telfUsuari;
+    }
+    
+    public String getCognomsUsuari() {
+        return cognomsUsuari;
+    }
+
+    public void setCognomsUsuari(String cognomsUsuari) {
+        this.cognomsUsuari = cognomsUsuari;
+    }
+
+    public String getLoginUsuari() {
+        return loginUsuari;
+    }
+
+    public void setLoginUsuari(String loginUsuari) {
+        this.loginUsuari = loginUsuari;
+    }
 
     public int getCodiUsuari() {
         return codiUsuari;

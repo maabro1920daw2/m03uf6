@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -40,6 +41,8 @@ public class LlistaEspaisViewController implements Initializable {
     private TableColumn<?, ?> colBorrar;
     @FXML
     private TableColumn<?, ?> colHabDisp;
+    @FXML
+    private TableView<?> tableEspais;
 
     /**
      * Initializes the controller class.

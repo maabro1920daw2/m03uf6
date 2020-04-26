@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -38,6 +39,8 @@ public class LlistaAvisViewController implements Initializable {
     private TableColumn<?, ?> colTelf;
     @FXML
     private TableColumn<?, ?> colTelfFamiliar;
+    @FXML
+    private TableView<?> tableAvis;
 
     /**
      * Initializes the controller class.

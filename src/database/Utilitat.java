@@ -33,36 +33,18 @@ public class Utilitat {
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3308/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "");
+            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "");
         } catch (SQLException sqle) {
             System.out.println("Error: " + sqle);
         }
     }
 
-    public boolean registrar(String user, String pass, String tipus) throws SQLException {
-        this.conectarDatabase();
-        try {
-            this.preparedStatement = this.connect.prepareStatement("insert into usuaris values (nom,pass,tipus)");
-            this.preparedStatement.setString(1, user);
-            this.preparedStatement.setString(2, pass);
-            this.preparedStatement.setString(3, tipus);
-            this.preparedStatement.executeUpdate();
-            this.preparedStatement.close();
-            this.connect.close();
-            return true;
-        } catch (SQLIntegrityConstraintViolationException sqle) {
-            System.out.println("El usuari ja existeix. Prova un altre.");
-            return false;
-        }
-
-    }
-
-    public boolean registrar2(String user, String pass, String tipus) throws SQLException {
+    public boolean registrarUsuari(String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
         this.conectarDatabase();
         try {
             this.connect.setAutoCommit(false);
             Statement st = this.connect.createStatement();
-            st.executeUpdate("INSERT INTO USUARIS(nom,pass,tipus) VALUES('" + user + "','" + pass + "','" + tipus + "')");
+            st.executeUpdate("INSERT INTO usuaris(nom,cognoms,telefon,login,contrasenya,tipus) VALUES('" + nom + "','" + cognoms + "','" + telefon + "','" + user + "','" + pass + "','" + tipus + "')");
             this.connect.commit();
             return true;
         } catch (SQLIntegrityConstraintViolationException sqle) {
@@ -80,7 +62,16 @@ public class Utilitat {
                 }
             }
             return false;
-
+        }
+    }
+    
+    public void borrarUsuari(int id) throws SQLException {
+        this.conectarDatabase();
+        try{
+            this.statement = this.connect.createStatement();
+            statement.executeUpdate("DELETE FROM usuaris where id='" + id+"'");           
+        }catch(SQLException ex){
+            System.out.println(ex.toString());
         }
     }
 
@@ -134,7 +125,6 @@ public class Utilitat {
                 }
             }
             return false;
-
         }
     }
 
@@ -145,13 +135,12 @@ public class Utilitat {
         this.resultSet = statement.executeQuery("SELECT * FROM usuaris");
         while (resultSet.next()) {
             if (resultSet.getString("tipus").equalsIgnoreCase( "coordinador")) {
-                o.add(new Coordinador(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("pass")));
+                o.add(new Coordinador(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("cognoms"),resultSet.getString("telefon"),resultSet.getString("login"),resultSet.getString("contrasenya")));
             } else if (resultSet.getString("tipus").equalsIgnoreCase( "gestor")) {
-                o.add(new Gestor(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("pass")));
+                o.add(new Gestor(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("cognoms"),resultSet.getString("telefon"),resultSet.getString("login"),resultSet.getString("contrasenya")));
             } else {
-                o.add(new Corrent(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("pass")));
+                o.add(new Corrent(resultSet.getInt("id"),resultSet.getString("nom"),resultSet.getString("cognoms"),resultSet.getString("telefon"),resultSet.getString("login"),resultSet.getString("contrasenya")));
             }
-
         }
         this.resultSet.close();
         this.statement.close();
@@ -202,12 +191,10 @@ public class Utilitat {
     }
 
     public boolean login(String user, String pass) throws SQLException {
-
         this.conectarDatabase();
-
         try {
             this.statement = this.connect.createStatement();
-            this.resultSet = statement.executeQuery("SELECT * FROM usuaris where nom='" + user + "' and pass='" + pass+"'");
+            this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='" + user + "' and contrasenya='" + pass+"'");
             return this.resultSet.isBeforeFirst();
         } catch (SQLIntegrityConstraintViolationException sqle) {
             System.out.println("El codi ja esta introduit. Prova un altre.");

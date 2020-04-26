@@ -27,6 +27,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -58,7 +60,7 @@ public class InicioViewController implements Initializable {
     @FXML
     private TextField nombreUsuario;
     @FXML
-    private TextField passwordUsuario;
+    private PasswordField passwordUsuario;
     @FXML
     private ComboBox<String> tipoUsuario;
     @FXML
@@ -69,6 +71,14 @@ public class InicioViewController implements Initializable {
     private Pane panelInicio;
     @FXML
     private Pane panelRegistro;
+    @FXML
+    private TextField loginUsuario;
+    @FXML
+    private TextField cognomsUsuari;
+    @FXML
+    private TextField telefonoUsuario;
+    @FXML
+    private Label errorInicio;
     /**
      * Initializes the controller class.
      */
@@ -78,6 +88,7 @@ public class InicioViewController implements Initializable {
         tipos.addAll("Coordinador", "Gestor", "Corrent");
         imgLogo.setImage(new Image ("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/img/logo_375x210px.png"));
         tipoUsuario.setItems(tipos);
+        errorInicio.setVisible(false);
     }
     
     @FXML
@@ -91,13 +102,13 @@ public class InicioViewController implements Initializable {
             panelRegistro.toFront();
         }
     }
-      @FXML
+    @FXML
     private void registrarUsuario(MouseEvent event) throws SQLException {
         if(event.getSource().equals(btnRegistro)){
-            Utilitat u= new Utilitat();
-            
-            u.registrar2(nombreUsuario.getText(), passwordUsuario.getText(), tipoUsuario.getValue());
-            
+            Utilitat u= new Utilitat();           
+            if(u.registrarUsuari(nombreUsuario.getText(),cognomsUsuari.getText(),telefonoUsuario.getText(),loginUsuario.getText(), passwordUsuario.getText(), tipoUsuario.getValue())){
+                panelInicio.toFront();
+            }           
         }
     }
 
@@ -133,7 +144,7 @@ public class InicioViewController implements Initializable {
             });                
             timeline.play();            
         }else{
-            
+            errorInicio.setVisible(true);
         }    
     }   
 }

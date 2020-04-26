@@ -14,10 +14,10 @@ public class Gestor extends Usuari {
         super();
     }
     
-    public Gestor(int codiUsuari, String nomUsuari, String passUsuari) {
-        super(codiUsuari,nomUsuari,passUsuari);
+    public Gestor(int codiUsuari, String nomUsuari, String cognomsUsuari, String telfUsuari, String loginUsuari, String passUsuari) {
+        super(codiUsuari,nomUsuari,cognomsUsuari,telfUsuari,loginUsuari,passUsuari);
       
-            }
+        }
     
     public void sugerirLloc() {}
 }
