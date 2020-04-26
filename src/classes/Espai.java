@@ -10,15 +10,16 @@ package classes;
  * @author marco
  */
 public class Espai {
-    private String localitzacio;
+    private String localitzacio,nomEspai;
     private double metresQuadrats;
     private boolean adaptat;
     private int codiEspai, sales, llitsDisponibles, llits;
     
     public Espai() {}
     
-    public Espai(int codiEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int llitsDisponibles, int llits) {
+    public Espai(int codiEspai, String localitzacio,String nomEspai, double metresQuadrats, boolean adaptat, int sales, int llitsDisponibles, int llits) {
         this.codiEspai = codiEspai;
+        this.nomEspai = nomEspai;
         this.localitzacio = localitzacio;
         this.metresQuadrats = metresQuadrats;
         this.adaptat = adaptat;

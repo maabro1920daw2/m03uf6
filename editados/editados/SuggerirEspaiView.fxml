@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="panelSuggerir" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SuggerirEspaiViewController">
+   <children>
+      <FontAwesomeIconView glyphName="TIMES" layoutX="728.0" layoutY="20.0" onMouseClicked="#cerrarPrograma" size="20" styleClass="botonCerrar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <Label layoutX="30.0" layoutY="20.0" styleClass="textSuggerir" stylesheets="@../resources/style.css" text="Suggerir espai" />
+      <TextField fx:id="codiAvi" layoutX="30.0" layoutY="81.0" promptText="Codi identificatiu de l'avi" styleClass="inputAltres" stylesheets="@../resources/style.css" />
+      <TextField fx:id="codiEspai" layoutX="360.0" layoutY="81.0" promptText=" Codi identificatiu espai" styleClass="inputAltres" stylesheets="@../resources/style.css" />
+      <Label layoutX="30.0" layoutY="129.0" styleClass="labelEspais" stylesheets="@../resources/style.css" text="Dates entrada i sortida" />
+      <Label layoutX="30.0" layoutY="168.0" styleClass="labelDates" stylesheets="@../resources/style.css" text="Data d'entrada:" />
+      <DatePicker fx:id="dataEntrada" layoutX="30.0" layoutY="198.0" styleClass="inputData" stylesheets="@../resources/style.css" />
+      <Label layoutX="360.0" layoutY="168.0" styleClass="labelDates" stylesheets="@../resources/style.css" text="Data de sortida:" />
+      <DatePicker fx:id="dataSortida" layoutX="360.0" layoutY="198.0" styleClass="inputData" stylesheets="@../resources/style.css" />
+      <Button fx:id="btnSuggerir" layoutX="30.0" layoutY="267.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Suggerir">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnValidar" layoutX="30.0" layoutY="458.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Validar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="30.0" layoutY="406.0" styleClass="labelEspais" stylesheets="@../resources/style.css" text="Dates entrada i sortida" />
+      <Button fx:id="btnDenegar" layoutX="147.0" layoutY="458.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Denegar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnReformular" layoutX="274.0" layoutY="458.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Reformular">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

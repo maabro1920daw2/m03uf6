@@ -33,7 +33,7 @@ public class Utilitat {
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "");
+            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3308/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "");
         } catch (SQLException sqle) {
             System.out.println("Error: " + sqle);
         }
@@ -200,6 +200,24 @@ public class Utilitat {
             System.out.println("El codi ja esta introduit. Prova un altre.");
             return false;
         }
+    }
+    
+    public boolean coordinador(String user) throws SQLException{
+         
+        this.conectarDatabase();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='"+user+"'");
+        while (resultSet.next()) {
+            if (resultSet.getString("tipus").equalsIgnoreCase( "coordinador")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return false;
     }
 
 }

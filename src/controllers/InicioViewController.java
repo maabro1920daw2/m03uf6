@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controllers;
 
 import database.Utilitat;
@@ -45,6 +41,7 @@ import javafx.stage.StageStyle;
  * @author Marcos
  */
 public class InicioViewController implements Initializable {
+
     @FXML
     private ImageView imgLogo;
     @FXML
@@ -79,6 +76,7 @@ public class InicioViewController implements Initializable {
     private TextField telefonoUsuario;
     @FXML
     private Label errorInicio;
+
     /**
      * Initializes the controller class.
      */
@@ -86,11 +84,11 @@ public class InicioViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> tipos = FXCollections.observableArrayList();
         tipos.addAll("Coordinador", "Gestor", "Corrent");
-        imgLogo.setImage(new Image ("file:/"+System.getProperty("user.dir").replace("\\", "/")+"/assets/img/logo_375x210px.png"));
+        imgLogo.setImage(new Image("file:/" + System.getProperty("user.dir").replace("\\", "/") + "/assets/img/logo_375x210px.png"));
         tipoUsuario.setItems(tipos);
         errorInicio.setVisible(false);
     }
-    
+
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
@@ -98,23 +96,24 @@ public class InicioViewController implements Initializable {
 
     @FXML
     private void irRegistro(MouseEvent event) {
-        if(event.getSource().equals(btnRegister)){
+        if (event.getSource().equals(btnRegister)) {
             panelRegistro.toFront();
         }
     }
+
     @FXML
     private void registrarUsuario(MouseEvent event) throws SQLException {
-        if(event.getSource().equals(btnRegistro)){
-            Utilitat u= new Utilitat();           
-            if(u.registrarUsuari(nombreUsuario.getText(),cognomsUsuari.getText(),telefonoUsuario.getText(),loginUsuario.getText(), passwordUsuario.getText(), tipoUsuario.getValue())){
+        if (event.getSource().equals(btnRegistro)) {
+            Utilitat u = new Utilitat();
+            if (u.registrarUsuari(nombreUsuario.getText(), cognomsUsuari.getText(), telefonoUsuario.getText(), loginUsuario.getText(), passwordUsuario.getText(), tipoUsuario.getValue())) {
                 panelInicio.toFront();
-            }           
+            }
         }
     }
 
     @FXML
     private void irLogin(MouseEvent event) {
-        if(event.getSource().equals(btnVolver)){
+        if (event.getSource().equals(btnVolver)) {
             panelInicio.toFront();
         }
     }
@@ -122,13 +121,21 @@ public class InicioViewController implements Initializable {
     @FXML
     public void irMenu(ActionEvent event) throws IOException, SQLException {
         Utilitat u = new Utilitat();
-        
+
         String usuario = loginName.getText();
         String password = loginPass.getText();
-            
-        if(u.login(usuario,password)){
-            Parent root = FXMLLoader.load(getClass().getResource("/views/MenuView.fxml"));
+
+        if (u.login(usuario, password)) {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MenuView.fxml"));
+            Parent root = loader.load();
+
+            MenuViewController m = loader.getController();
+
+            m.isCoordinador(u.coordinador(usuario));
+
             Scene scene = btnLogin.getScene();
+
             root.translateXProperty().set(scene.getWidth());
 
             AnchorPane parentContainer = (AnchorPane) btnLogin.getScene().getRoot();
@@ -141,10 +148,11 @@ public class InicioViewController implements Initializable {
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(t -> {
                 parentContainer.getChildren().remove(content_area);
-            });                
-            timeline.play();            
-        }else{
+            });
+            timeline.play();
+            
+        } else {
             errorInicio.setVisible(true);
-        }    
-    }   
+        }
+    }
 }

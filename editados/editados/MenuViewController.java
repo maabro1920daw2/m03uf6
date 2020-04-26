@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
@@ -22,12 +21,9 @@ import javafx.scene.layout.BorderPane;
  * @author Marcos
  */
 public class MenuViewController implements Initializable {
-    private boolean coord=false;
+
     @FXML
     private BorderPane mainPane;
-    
-    @FXML
-    private Button regUser,modUser,cerUser;
 
     /**
      * Initializes the controller class.
@@ -102,13 +98,4 @@ public class MenuViewController implements Initializable {
         mainPane.setCenter(root);
     }
     
-    @FXML
-    public void isCoordinador(boolean message){
-        coord=message;
-        if(!coord){
-            regUser.setDisable(true);
-            modUser.setDisable(true);
-            cerUser.setDisable(true);
-        }
-    }
 }

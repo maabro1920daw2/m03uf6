@@ -28,7 +28,7 @@
                   <Insets bottom="5.0" left="10.0" top="10.0" />
                </padding>
             </Label>
-            <Button fx:id="regUser"  alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#regUsuari" prefHeight="55.0" prefWidth="150.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Registrar usuari">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#regUsuari" prefHeight="55.0" prefWidth="150.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Registrar usuari">
                <graphic>
                   <FontAwesomeIconView glyphName="USER" styleClass="icoMenu" />
                </graphic>
@@ -36,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="modUser" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#modUsuari" prefHeight="55.0" prefWidth="154.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Modificar usuari">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#modUsuari" prefHeight="55.0" prefWidth="154.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Modificar usuari">
                <graphic>
                   <FontAwesomeIconView glyphName="EDIT" styleClass="icoMenu" />
                </graphic>
@@ -44,7 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="cerUser" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#cerUsuari" prefHeight="55.0" prefWidth="150.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Cercar usuari">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#cerUsuari" prefHeight="55.0" prefWidth="150.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Cercar usuari">
                <graphic>
                   <FontAwesomeIconView glyphName="SEARCH" styleClass="icoMenu" />
                </graphic>

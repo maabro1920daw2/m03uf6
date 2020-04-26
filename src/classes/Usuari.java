@@ -48,7 +48,7 @@ abstract public class Usuari {
     public String getCognomsUsuari() {
         return cognomsUsuari;
     }
-
+    
     public void setCognomsUsuari(String cognomsUsuari) {
         this.cognomsUsuari = cognomsUsuari;
     }
