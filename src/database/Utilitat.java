@@ -33,7 +33,7 @@ public class Utilitat {
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3308/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
         } catch (SQLException sqle) {
             System.out.println("Error: " + sqle);
         }
