@@ -587,17 +587,67 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
 
     @Override
     public void borrarEspai(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.conectar();
+            this.statement = this.connect.createStatement();
+            statement.executeUpdate("DELETE FROM avis where espaisId='" + id + "'");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
     }
 
     @Override
     public ObservableList<Espai> getEspais() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ObservableList<Espai> o = FXCollections.observableArrayList();
+        this.conectar();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM espais");
+        while (resultSet.next()) {
+            o.add(new Espai(resultSet.getInt("espaiId"), resultSet.getString("nomEspai"), resultSet.getString("localitzacio"), resultSet.getDouble("metresQuadrats"),
+                    resultSet.getBoolean("adaptat"), resultSet.getInt("sales"), resultSet.getInt("menjadors"), resultSet.getInt("habitacions"), resultSet.getInt("llitsDisponibles")
+            , resultSet.getInt("llits")));
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return o;
     }
 
     @Override
     public boolean editarEspai(int codiEspai, String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int menjadors, int habitacions, int llitsDisponibles, int llits) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.conectar();
+            this.connect.setAutoCommit(false);
+            this.preparedStatement = this.connect.prepareStatement("update espai set nomEspai=?, localitzacio=?, metresQuadrats=?, adaptat=?, sales=?, menjadors=?, habitacions=?, llits=? where espaisId=?");
+            this.preparedStatement.setString(1, nomEspai);
+            this.preparedStatement.setString(2, localitzacio);
+            this.preparedStatement.setBoolean(3, adaptat);
+            this.preparedStatement.setInt(4, sales);
+            this.preparedStatement.setInt(5, menjadors);
+            this.preparedStatement.setInt(6, habitacions);
+            this.preparedStatement.setInt(7, llits);
+            this.preparedStatement.setInt(8, codiEspai);
+            this.preparedStatement.executeUpdate();
+            this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException sqle) {
+            System.out.println("El avi ja existeix. Prova un altre.");
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            if (this.connect != null) {
+                try {
+                    this.connect.rollback();
+                    return false;
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                    return false;
+                }
+            }
+            return false;
+        }
     }
 
 }
