@@ -9,10 +9,12 @@ package database;
 import classes.Avi;
 import classes.Coordinador;
 import classes.Corrent;
+import classes.Espai;
 import classes.Gestor;
 import classes.Usuari;
 import enumerations.Minusvalia;
 import interfaces.IAviDAO;
+import interfaces.IEspaiDAO;
 import interfaces.IUsuariDAO;
 import java.sql.*;
 import java.util.InputMismatchException;
@@ -25,7 +27,7 @@ import javafx.collections.ObservableList;
  *
  * @author Marcos, Victor
  */
-public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
+public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO {
 
     private ResultSet resultSet = null;
     private PreparedStatement preparedStatement = null;
@@ -252,7 +254,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         while (resultSet.next()) {
             Minusvalia min = Minusvalia.valueOf(resultSet.getString("minusvalia"));
             o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getInt("edat"),
-                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min));
+                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min, this.getEspai(1)));
         }
         this.resultSet.close();
         this.statement.close();
@@ -260,19 +262,35 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         return o;
     }
 
-    public ObservableList<Avi> getAvisSugerits() throws SQLException {
-        ObservableList<Avi> o = FXCollections.observableArrayList();
-        this.conectar();
-        this.statement = this.connect.createStatement();
-        this.resultSet = statement.executeQuery("SELECT * FROM avis where suggerit=true");
-        while (resultSet.next()) {
-            Minusvalia min = Minusvalia.valueOf(resultSet.getString("minusvalia"));
+    public Espai getEspai(int id) throws SQLException {
+        Espai e = new Espai();
 
-            o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getInt("edat"),
-                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min));
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM espais where espaiId='" + id + "'");
+        while (resultSet.next()) {
+
+            e = new Espai(resultSet.getInt("espaiId"), resultSet.getString("nomEspai"), resultSet.getString("localitzacio"), resultSet.getDouble("metresQuadrats"),
+                    resultSet.getBoolean("adaptat"), resultSet.getInt("sales"), resultSet.getInt("menjadors"), resultSet.getInt("habitacions"), resultSet.getInt("llitsDisponibles"), resultSet.getInt("llits"));
         }
         this.resultSet.close();
         this.statement.close();
+
+        return e;
+    }
+
+    public ObservableList<Avi> getAvisSugerits() throws SQLException {
+        ObservableList<Avi> o = FXCollections.observableArrayList();
+        this.conectar();
+        Statement statement1 = this.connect.createStatement();
+        ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM avis where suggerit=true");
+        while (resultSet1.next()) {
+            Minusvalia min = Minusvalia.valueOf(resultSet1.getString("minusvalia"));
+
+            o.add(new Avi(resultSet1.getInt("aviId"), resultSet1.getString("nom"), resultSet1.getString("cognoms"), resultSet1.getInt("edat"),
+                    resultSet1.getString("telefon"), resultSet1.getString("telefonFamiliar"), min, this.getEspai(resultSet1.getInt("espaiId"))));
+        }
+        resultSet1.close();
+        statement1.close();
         this.connect.close();
         return o;
     }
@@ -356,7 +374,8 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
-     public boolean denegarAvi(int id) throws SQLException {
+
+    public boolean denegarAvi(int id) throws SQLException {
         try {
             this.conectar();
             this.connect.setAutoCommit(false);
@@ -385,7 +404,8 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
-     public boolean reformularAvi(int id,int esp) throws SQLException {
+
+    public boolean reformularAvi(int id, int esp) throws SQLException {
         try {
             this.conectar();
             this.connect.setAutoCommit(false);
@@ -416,15 +436,15 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
-    
 
     public boolean suggerirAvi(int codiA, int codiE, String dateE, String dateS) throws SQLException {
         try {
             this.conectar();
             this.connect.setAutoCommit(false);
-            this.preparedStatement = this.connect.prepareStatement("update avis set suggerit=? where aviId=?");
+            this.preparedStatement = this.connect.prepareStatement("update avis set suggerit=?,espaiId=? where aviId=?");
             this.preparedStatement.setBoolean(1, true);
-            this.preparedStatement.setInt(2, codiA);
+            this.preparedStatement.setInt(2, codiE);
+            this.preparedStatement.setInt(3, codiA);
             this.preparedStatement.executeUpdate();
             this.preparedStatement.close();
             this.preparedStatement = this.connect.prepareStatement("insert into historial(diaLlegada,diaSalida,aviId,espaiId) values (?, ?, ?, ?)");
@@ -521,6 +541,63 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         this.statement.close();
         this.connect.close();
         return false;
+    }
+
+    @Override
+    public boolean registrarEspai(String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int menjadors, int habitacions, int llitsDisponibles, int llits) throws SQLException {
+        //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.conectar();
+            this.connect.setAutoCommit(false);
+            this.preparedStatement = this.connect.prepareStatement("insert into espais(nomEspai,localitzacio,metresQuadrats,adaptat,sales,menjadors,habitacions,llitsDisponibles,llits) values (?, ?, ?, ?, ?, ?,?,?,?)");
+            this.preparedStatement.setString(1, nomEspai);
+            this.preparedStatement.setString(2, localitzacio);
+            this.preparedStatement.setDouble(3, metresQuadrats);
+            this.preparedStatement.setBoolean(4, adaptat);
+            this.preparedStatement.setInt(5, sales);
+            this.preparedStatement.setInt(6, menjadors);
+            this.preparedStatement.setInt(7, habitacions);
+            this.preparedStatement.setInt(8, llits);
+            this.preparedStatement.setInt(9, llits);
+            this.preparedStatement.executeUpdate();
+            this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException sqle) {
+            System.out.println("El usuari ja existeix. Prova un altre.");
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            if (this.connect != null) {
+                try {
+                    this.connect.rollback();
+                    return false;
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                    return false;
+                }
+            }
+
+            return false;
+
+        }
+
+    }
+
+    @Override
+    public void borrarEspai(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ObservableList<Espai> getEspais() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean editarEspai(int codiEspai, String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int menjadors, int habitacions, int llitsDisponibles, int llits) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

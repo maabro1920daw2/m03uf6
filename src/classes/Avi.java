@@ -31,7 +31,7 @@ public class Avi {
      * @param telefonFamiliar
      * @param minusvalia 
      */
-    public Avi(int codiAvi, String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, Minusvalia minusvalia) {
+    public Avi(int codiAvi, String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, Minusvalia minusvalia, Espai espai) {
         this.nom = nom;
         this.cognoms = cognoms;
         this.codiAvi = codiAvi;
@@ -39,6 +39,7 @@ public class Avi {
         this.numTelefon = numTelefon;
         this.telefonFamiliar = telefonFamiliar;
         this.minusvalia = minusvalia;
+        this.espai = espai;
     }
 
     public String getNom() {

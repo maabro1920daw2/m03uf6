@@ -8,11 +8,11 @@ package classes;
  * @author Marcos, Victor
  */
 public class Espai {
-    private String localitzacio;
+    private String localitzacio,nomEspai;
     private double metresQuadrats;
     private boolean adaptat;
-    private int codiEspai, llitsDisponibles, llits;
-    private Sala sales;
+    private int codiEspai, llitsDisponibles, llits,menjadors,habitacions;
+    private int sales;
     
     public Espai() {}
     /**
@@ -25,10 +25,13 @@ public class Espai {
      * @param llitsDisponibles
      * @param llits 
      */
-    public Espai(int codiEspai, String localitzacio, double metresQuadrats, boolean adaptat, Sala sales, int llitsDisponibles, int llits) {
+    public Espai(int codiEspai,String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales,int menjadors,int habitacions, int llitsDisponibles, int llits) {
         this.codiEspai = codiEspai;
         this.localitzacio = localitzacio;
         this.metresQuadrats = metresQuadrats;
+        this.menjadors=menjadors;
+        this.nomEspai=nomEspai;
+        this.habitacions=habitacions;
         this.adaptat = adaptat;
         this.sales = sales;
         this.llitsDisponibles = llitsDisponibles;

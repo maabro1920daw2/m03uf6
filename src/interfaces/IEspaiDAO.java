@@ -25,7 +25,7 @@ public interface IEspaiDAO {
      * @return
      * @throws SQLException 
      */
-    public boolean registrarEspai(String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException;
+    public boolean registrarEspai(String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales,int menjadors,int habitacions, int llitsDisponibles, int llits) throws SQLException;
     /**
      * Declaracio del metode per esborrar espais
      * @param id
@@ -37,7 +37,7 @@ public interface IEspaiDAO {
      * @return
      * @throws SQLException 
      */
-    public ObservableList<Espai> getAvis() throws SQLException;
+    public ObservableList<Espai> getEspais() throws SQLException;
     /**
      * Declaracio del metode per editar espais
      * @param id
@@ -50,5 +50,5 @@ public interface IEspaiDAO {
      * @return
      * @throws SQLException 
      */
-    public boolean editarEspai(int id, String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException;    
+    public boolean editarEspai(int codiEspai,String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales,int menjadors,int habitacions, int llitsDisponibles, int llits) throws SQLException;    
 }

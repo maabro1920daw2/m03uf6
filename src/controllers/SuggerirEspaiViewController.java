@@ -141,7 +141,7 @@ public class SuggerirEspaiViewController implements Initializable {
     private void reformular(MouseEvent event) throws SQLException {
         Utilitat u = new Utilitat();
         Avi a = taulaSuggeriments.getSelectionModel().getSelectedItem();
-        int codiE =Integer.parseInt(codiEspai.getText());
+        int codiE =Integer.parseInt(codiEspaiR.getText());
         Coordinador.reformularAssignacio(a,codiE);
     }
 
