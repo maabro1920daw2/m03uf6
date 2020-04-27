@@ -319,3 +319,8 @@
     -fx-pref-width: 690;
     -fx-pref-height: 390;
 }
+.fieldNou {
+    -fx-font-size: 14;
+    -fx-pref-width: 80;
+    -fx-pref-height: 34;        
+}
