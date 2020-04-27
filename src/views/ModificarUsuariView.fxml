@@ -9,8 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="modificarUsuaris" stylesheets="@../resources/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controllers.ModificarUsuariViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="modificarUsuaris" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModificarUsuariViewController">
    <children>
       <FontAwesomeIconView glyphName="TIMES" layoutX="728.0" layoutY="20.0" onMouseClicked="#cerrarPrograma" size="20" styleClass="botonCerrar">
          <cursor>
@@ -18,17 +17,18 @@
          </cursor>
       </FontAwesomeIconView>
       <Label layoutX="30.0" layoutY="20.0" styleClass="textModificaUsuaris" stylesheets="@../resources/style.css" text="Modificar un usuari" />
-      <TextField fx:id="modNom" layoutX="30.0" layoutY="78.0" promptText="Nom de l'usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <TextField fx:id="idUsuari" layoutX="30.0" layoutY="78.0" promptText="Codi de l'usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
       <Label layoutX="30.0" layoutY="127.0" styleClass="labelUsuaris" stylesheets="@../resources/style.css" text="Dades a modificar" />
-      <TextField fx:id="modCognoms" layoutX="30.0" layoutY="172.0" promptText="Cognoms" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
-      <TextField fx:id="modTelefon" layoutX="360.0" layoutY="172.0" promptText="Telèfon" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
-      <TextField fx:id="modLogin" layoutX="30.0" layoutY="215.0" promptText="Login usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
-      <PasswordField fx:id="modContrasenya" layoutX="360.0" layoutY="215.0" promptText="Contrasenya" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
-      <ComboBox fx:id="modTipus" layoutX="30.0" layoutY="259.0" prefWidth="150.0" promptText="Seleccio del tipus d'usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
-      <Button layoutX="30.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Guardar">
+      <TextField fx:id="modCognoms" layoutX="360.0" layoutY="172.0" promptText="Cognoms" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <TextField fx:id="modTelefon" layoutX="30.0" layoutY="212.0" promptText="Telèfon" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <TextField fx:id="modLogin" layoutX="30.0" layoutY="252.0" promptText="Login usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <PasswordField fx:id="modContrasenya" layoutX="360.0" layoutY="252.0" promptText="Contrasenya" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <ComboBox fx:id="modTipus" layoutX="30.0" layoutY="291.0" prefWidth="150.0" promptText="Seleccio del tipus d'usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <Button fx:id="btnGuardar" layoutX="30.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#actualizarBD" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Guardar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextField fx:id="modNom" layoutX="30.0" layoutY="172.0" promptText="Nom de l'usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
    </children>
 </AnchorPane>

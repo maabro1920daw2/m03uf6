@@ -135,6 +135,10 @@ and open the template in the editor.
     -fx-pref-width: 450;
     -fx-pref-height: 30;    
 }
+.taules {
+    -fx-pref-width: 699px;
+    -fx-pref-height: 400px;    
+}
 .table-view .column-header {
     -fx-background-color: #0d6a38;
 }
@@ -278,10 +282,15 @@ and open the template in the editor.
     -fx-pref-height: 600px;
     -fx-background-color: #76bd43;
 }
-.paneSugCoordinador, .paneSugGestor {
+.paneSugCoordinador {
     -fx-pref-width: 750px;
     -fx-pref-height: 480px;
     -fx-background-color: #76bd43;
+}
+.paneSugGestor {
+    -fx-pref-width: 750px;
+    -fx-pref-height: 600px;
+    -fx-background-color: #76bd43;    
 }
 .panelSugGestor {
 

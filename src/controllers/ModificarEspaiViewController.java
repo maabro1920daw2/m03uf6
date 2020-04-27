@@ -42,6 +42,8 @@ public class ModificarEspaiViewController implements Initializable {
     private TextField modHabitacions;
     @FXML
     private Button btnGuardar;
+    @FXML
+    private TextField idEspai;
 
     /**
      * Initializes the controller class.
