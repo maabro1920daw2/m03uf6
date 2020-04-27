@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package classes;
 
 /**
- *
- * @author marco
+ * Clase per instancia una habitacio
+ * @author Marcos, Victor
  */
 public class Habitacio extends Sala {
     private int llitsDisponibles, llits;
@@ -15,7 +13,13 @@ public class Habitacio extends Sala {
     public Habitacio() {
         super();
     }
-    
+    /**
+     * Constructor clase habitacio
+     * @param codi
+     * @param superficie
+     * @param llitsDisponibles
+     * @param llits 
+     */
     public Habitacio(int codi, double superficie, int llitsDisponibles, int llits) {
         super(codi,superficie);
         this.llitsDisponibles = llitsDisponibles;

@@ -1,27 +1,28 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package database;
-
+/**
+ * Imports
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author Marcos
+ * Clase per realitzar la connexio a la DB 
+ * @author Marcos, Victor
  */
 public class Connexio {
-    protected Connection connect;
-    
+    protected Connection connect;    
     private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private final String DB_URL = "jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    
+    private final String DB_URL = "jdbc:mysql://localhost:3306/BDGestion?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";    
     private final String USER = "root";
     private final String PASS = "";
-    
+    /**
+     * Metode de connexio
+     * @throws SQLException 
+     */
     public void conectar() throws SQLException {
         try {
             try {
@@ -34,7 +35,10 @@ public class Connexio {
             throw e;
         }
     }
-    
+    /**
+     * Metode per tancar connexions
+     * @throws SQLException 
+     */
     public void cerrar() throws SQLException {
         if(this.connect != null){
             if(!this.connect.isClosed()) {

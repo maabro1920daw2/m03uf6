@@ -1,14 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package controllers;
-
+/**
+ * Imports
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -17,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author Marcos
+ * @author Marcos, Victor
  */
 public class RegEspaiViewController implements Initializable {
 
@@ -37,6 +38,10 @@ public class RegEspaiViewController implements Initializable {
     private ToggleGroup AdaptatGp;
     @FXML
     private RadioButton opNo;
+    @FXML
+    private Label infoError;
+    @FXML
+    private Label infoCorrecto;
 
     /**
      * Initializes the controller class.
@@ -45,8 +50,13 @@ public class RegEspaiViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         opSi.setToggleGroup(AdaptatGp);
         opNo.setToggleGroup(AdaptatGp);
+        infoCorrecto.setVisible(false);
+        infoError.setVisible(false);
     }    
-
+    /**
+     * Metode per tancar l'aplicacio
+     * @param event 
+     */
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);

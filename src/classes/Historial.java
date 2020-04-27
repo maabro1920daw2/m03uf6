@@ -1,12 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package classes;
 
 /**
- *
+ * Clase per instanciar l'historial
  * @author marco
  */
 public class Historial {
@@ -15,7 +13,13 @@ public class Historial {
     private Espai espai;
     
     public Historial() {}
-
+    /**
+     * Constructor de la clase Historial
+     * @param diaEntrada
+     * @param diaSortida
+     * @param avi
+     * @param espai 
+     */
     public Historial(String diaEntrada, String diaSortida, Avi avi, Espai espai) {
         this.diaEntrada = diaEntrada;
         this.diaSortida = diaSortida;

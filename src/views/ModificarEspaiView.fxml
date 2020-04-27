@@ -37,5 +37,7 @@
          </cursor>
       </Button>
       <TextField fx:id="modNom" layoutX="30.0" layoutY="170.0" promptText="Nom de l'espai" styleClass="inputNombreAvi" stylesheets="@../resources/style.css" />
+      <Label fx:id="infoCorrecto" layoutX="30.0" layoutY="443.0" styleClass="infoSesion" text="Espai modificat correctament" />
+      <Label fx:id="infoError" layoutX="30.0" layoutY="443.0" styleClass="infoError" text="Error al modificar l'espai" />
    </children>
 </AnchorPane>

@@ -1,10 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package controllers;
-
+/**
+ * Imports
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ import javafx.scene.layout.Pane;
 /**
  * FXML Controller class
  *
- * @author Marcos
+ * @author Marcos, Victor
  */
 public class SuggerirEspaiViewController implements Initializable {
     private boolean coord,gestor;
@@ -66,23 +66,30 @@ public class SuggerirEspaiViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         mostrar();
     }    
-
+    /**
+     * Metode per tancar l'aplicacio
+     * @param event 
+     */
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
     }
-    
-    private void mostrar() {
-        
+    /**
+     * Metode per habilitar opcions del menu depenent del tipus d'usuari
+     */
+    private void mostrar() {        
        if(coord){
-           paneGestor.setVisible(false);
-           
+           paneGestor.setVisible(false);           
        }
        if(gestor){
            paneCoordinador.setVisible(false);
        }
     }
-    
+    /**
+     * Metode per identificar el tipus de l'usuari
+     * @param c
+     * @param g 
+     */
     public void whatTipus(boolean c,boolean g){
         System.out.println("hola");
         coord=c;

@@ -1,27 +1,39 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package classes;
-
+/**
+ * Imports
+ */
 import enumerations.Minusvalia;
 
 /**
- *
- * @author marco
+ * Clase per instaciar avis
+ * @author Marcos, Victor
  */
 public class Avi {
-    private String nom;
-    private Espai espai, sugeriment;
-    private int codiAvi, edat, numTelefon, telefonFamiliar;
+
+    private String nom, cognoms, numTelefon, telefonFamiliar;
+    private Espai espai;
+    private int codiAvi, edat;
     private Minusvalia minusvalia;
     private boolean sugerit, aprovat;
-    
-    public Avi() {}
 
-    public Avi(String nom, int codiAvi, int edat, int numTelefon, int telefonFamiliar, Minusvalia minusvalia) {
+    public Avi() {
+    }
+    /**
+     * Constructor clase avi
+     * @param codiAvi
+     * @param nom
+     * @param cognoms
+     * @param edat
+     * @param numTelefon
+     * @param telefonFamiliar
+     * @param minusvalia 
+     */
+    public Avi(int codiAvi, String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, Minusvalia minusvalia) {
         this.nom = nom;
+        this.cognoms = cognoms;
         this.codiAvi = codiAvi;
         this.edat = edat;
         this.numTelefon = numTelefon;
@@ -37,6 +49,38 @@ public class Avi {
         this.nom = nom;
     }
 
+    public String getCognoms() {
+        return cognoms;
+    }
+
+    public void setCognoms(String cognoms) {
+        this.cognoms = cognoms;
+    }
+
+    public Espai getEspai() {
+        return espai;
+    }
+
+    public void setEspai(Espai espai) {
+        this.espai = espai;
+    }
+
+    public boolean isSugerit() {
+        return sugerit;
+    }
+
+    public void setSugerit(boolean sugerit) {
+        this.sugerit = sugerit;
+    }
+
+    public boolean isAprovat() {
+        return aprovat;
+    }
+
+    public void setAprovat(boolean aprovat) {
+        this.aprovat = aprovat;
+    }
+    
     public int getCodiAvi() {
         return codiAvi;
     }
@@ -53,19 +97,19 @@ public class Avi {
         this.edat = edat;
     }
 
-    public int getNumTelefon() {
+    public String getNumTelefon() {
         return numTelefon;
     }
 
-    public void setNumTelefon(int numTelefon) {
+    public void setNumTelefon(String numTelefon) {
         this.numTelefon = numTelefon;
     }
 
-    public int getTelefonFamiliar() {
+    public String getTelefonFamiliar() {
         return telefonFamiliar;
     }
 
-    public void setTelefonFamiliar(int telefonFamiliar) {
+    public void setTelefonFamiliar(String telefonFamiliar) {
         this.telefonFamiliar = telefonFamiliar;
     }
 
@@ -76,5 +120,4 @@ public class Avi {
     public void setMinusvalia(Minusvalia minusvalia) {
         this.minusvalia = minusvalia;
     }
-    
 }

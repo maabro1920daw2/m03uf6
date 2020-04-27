@@ -1,5 +1,10 @@
+/**
+ * Paquets
+ */
 package controllers;
-
+/**
+ * Imports
+ */
 import database.Utilitat;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
@@ -37,7 +42,7 @@ import javafx.stage.StageStyle;
 /**
  * FXML Controller class
  *
- * @author Marcos
+ * @author Marcos, Victor
  */
 public class InicioViewController implements Initializable {
 
@@ -51,28 +56,7 @@ public class InicioViewController implements Initializable {
     private TextField loginPass;
     @FXML
     private Button btnLogin;
-    @FXML
-    private Button btnRegister;
-    @FXML
-    private TextField nombreUsuario;
-    @FXML
-    private PasswordField passwordUsuario;
-    @FXML
-    private ComboBox<String> tipoUsuario;
-    @FXML
-    private Button btnRegistro;
-    @FXML
-    private FontAwesomeIconView btnVolver;
-    @FXML
-    private Pane panelInicio;
-    @FXML
-    private Pane panelRegistro;
-    @FXML
-    private TextField loginUsuario;
-    @FXML
-    private TextField cognomsUsuari;
-    @FXML
-    private TextField telefonoUsuario;
+
     @FXML
     private Label errorInicio;
 
@@ -81,42 +65,23 @@ public class InicioViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> tipos = FXCollections.observableArrayList();
-        tipos.addAll("Coordinador", "Gestor", "Corrent");
         imgLogo.setImage(new Image("file:/" + System.getProperty("user.dir").replace("\\", "/") + "/assets/img/logo_375x210px.png"));
-        tipoUsuario.setItems(tipos);
         errorInicio.setVisible(false);
     }
-
+    /**
+     * Metode per tancar l'aplicacio
+     * @param event 
+     */
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
     }
-
-    @FXML
-    private void irRegistro(MouseEvent event) {
-        if (event.getSource().equals(btnRegister)) {
-            panelRegistro.toFront();
-        }
-    }
-
-    @FXML
-    private void registrarUsuario(MouseEvent event) throws SQLException {
-        if (event.getSource().equals(btnRegistro)) {
-            Utilitat u = new Utilitat();
-            if (u.registrarUsuari(nombreUsuario.getText(), cognomsUsuari.getText(), telefonoUsuario.getText(), loginUsuario.getText(), passwordUsuario.getText(), tipoUsuario.getValue())) {
-                panelInicio.toFront();
-            }
-        }
-    }
-
-    @FXML
-    private void irLogin(MouseEvent event) {
-        if (event.getSource().equals(btnVolver)) {
-            panelInicio.toFront();
-        }
-    }
-
+    /**
+     * Metode per anar al menu dins la vista
+     * @param event
+     * @throws IOException
+     * @throws SQLException 
+     */
     @FXML
     public void irMenu(ActionEvent event) throws IOException, SQLException {
         Utilitat u = new Utilitat();

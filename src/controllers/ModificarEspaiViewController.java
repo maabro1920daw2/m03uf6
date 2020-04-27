@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -44,6 +45,10 @@ public class ModificarEspaiViewController implements Initializable {
     private Button btnGuardar;
     @FXML
     private TextField idEspai;
+    @FXML
+    private Label infoCorrecto;
+    @FXML
+    private Label infoError;
 
     /**
      * Initializes the controller class.
@@ -52,6 +57,8 @@ public class ModificarEspaiViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         opSi.setToggleGroup(gpAdaptat);
         opNo.setToggleGroup(gpAdaptat);
+        infoCorrecto.setVisible(false);
+        infoError.setVisible(false);
     }    
 
     @FXML

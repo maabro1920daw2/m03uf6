@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package classes;
 
 /**
- *
- * @author marco
+ * Clase per instanciar menjador
+ * @author Marcos, Victor
  */
 public class Menjador extends Sala {
     private int taules;
@@ -16,7 +14,13 @@ public class Menjador extends Sala {
     public Menjador() {
         super();
     }
-    
+    /**
+     * Constructor clase menjador
+     * @param codi
+     * @param superficie
+     * @param taules
+     * @param cadires 
+     */
     public Menjador(int codi, double superficie, int taules, int cadires) {
         super(codi,superficie);
         this.taules = taules;
