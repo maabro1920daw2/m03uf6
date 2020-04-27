@@ -36,21 +36,21 @@ public class LlistaEspaisViewController implements Initializable {
     @FXML
     private TextField buscadorEspai;
     @FXML
-    private TableColumn<?, ?> colId;
+    private TableColumn colId;
     @FXML
-    private TableColumn<?, ?> colLocalitzacio;
+    private TableColumn colLocalitzacio;
     @FXML
-    private TableColumn<?, ?> colSuperficie;
+    private TableColumn colSuperficie;
     @FXML
-    private TableColumn<?, ?> colSales;
+    private TableColumn colSales;
     @FXML
-    private TableColumn<?, ?> colMenajdor;
+    private TableColumn colMenajdor;
     @FXML
-    private TableColumn<?, ?> colHabitacions;
+    private TableColumn colHabitacions;
     @FXML
-    private TableColumn<?, ?> colAdaptat;
+    private TableColumn colAdaptat;
     @FXML
-    private TableColumn<?, ?> colHabDisp;
+    private TableColumn colHabDisp;
     @FXML
     private TableView tableEspais;
     @FXML
@@ -61,7 +61,7 @@ public class LlistaEspaisViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        mostrar(); 
     }
     
     @FXML
@@ -98,15 +98,13 @@ public class LlistaEspaisViewController implements Initializable {
                 String lowerCaseFilter = newValue.toLowerCase();
                 if (espai.getLocalitzacio().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches first name.
-                } else if (usuari.getTipus().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    return true;
                 } else {
                     return false; // Does not match.
                 }
             });
         });
 
-        SortedList<Usuari> sortedData = new SortedList<>(filteredData);
+        SortedList<Espai> sortedData = new SortedList<>(filteredData);
 
         sortedData.comparatorProperty().bind(tableEspais.comparatorProperty());
 

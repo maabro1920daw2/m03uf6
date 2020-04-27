@@ -249,15 +249,15 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
     public ObservableList<Avi> getAvis() throws SQLException {
         ObservableList<Avi> o = FXCollections.observableArrayList();
         this.conectar();
-        this.statement = this.connect.createStatement();
-        this.resultSet = statement.executeQuery("SELECT * FROM avis");
-        while (resultSet.next()) {
-            Minusvalia min = Minusvalia.valueOf(resultSet.getString("minusvalia"));
-            o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getInt("edat"),
-                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min, this.getEspai(1)));
+        Statement statement1 = this.connect.createStatement();
+        ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM avis");
+        while (resultSet1.next()) {
+            Minusvalia min = Minusvalia.valueOf(resultSet1.getString("minusvalia"));
+            o.add(new Avi(resultSet1.getInt("aviId"), resultSet1.getString("nom"), resultSet1.getString("cognoms"), resultSet1.getInt("edat"),
+                    resultSet1.getString("telefon"), resultSet1.getString("telefonFamiliar"), min, this.getEspai(1)));
         }
-        this.resultSet.close();
-        this.statement.close();
+        resultSet1.close();
+        statement1.close();
         this.connect.close();
         return o;
     }

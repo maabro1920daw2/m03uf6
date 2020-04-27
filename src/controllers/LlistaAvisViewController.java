@@ -80,6 +80,7 @@ public class LlistaAvisViewController implements Initializable {
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colCognoms.setCellValueFactory(new PropertyValueFactory<>("cognoms"));
         colEdat.setCellValueFactory(new PropertyValueFactory<>("edat"));
+        colEspai.setCellValueFactory(new PropertyValueFactory<>("espai"));
         colTelf.setCellValueFactory(new PropertyValueFactory<>("numTelefon"));
         colTelfFamiliar.setCellValueFactory(new PropertyValueFactory<>("telefonFamiliar"));
         colMinusvalia.setCellValueFactory(new PropertyValueFactory<>("minusvalia"));
