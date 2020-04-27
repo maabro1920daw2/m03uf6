@@ -1,0 +1,83 @@
+create database BDGestion;
+use bdgestion;
+create table usuaris (
+	id int not null auto_increment, 
+	nom varchar(20), 
+	cognoms varchar(30),
+	telefon varchar(30),
+	login varchar(20),
+	contrasenya varchar(20),
+	tipus varchar(20),
+	primary key (id)
+);
+create table espais(
+    	espaiId int not null auto_increment,
+	nomEspai varchar(30), 
+    	localitzacio varchar(30),
+    	metresQuadrats double, 
+    	adaptat boolean,   
+    	sales int,
+	menjadors int,
+	habitacions int,
+    	llitsDisponibles int,
+    	llits int, 
+    	primary key (espaiId)
+);
+create table avis(
+    	aviId int not null auto_increment, 
+    	nom varchar(20),
+	cognoms varchar(20),
+	edat int, 
+    	minusvalia varchar(30),
+    	telefon int,
+    	telefonFamiliar int,
+    	suggerit boolean default false,
+    	aprovat boolean default false,
+    	espaiId int,
+    	primary key (aviId),
+    	FOREIGN KEY (espaiId) REFERENCES espais(espaiId)
+);
+create table historial(
+    	historialId int not null auto_increment, 
+    	diaLlegada varchar(20), 
+    	diaSalida varchar(20),
+    	aviId int,
+    	espaiId int,
+    	primary key (historialId),
+    	FOREIGN KEY (aviId) REFERENCES avis(aviId),
+    	FOREIGN KEY (espaiId) REFERENCES espais(espaiId)
+);
+
+set autocommit=0;
+set global transaction isolation level SERIALIZABLE;
+lock tables
+	usuaris write;
+	espais write;
+	avis write;
+start transaction;
+insert into usuaris(nom,cognoms,telefon,login,contrasenya,tipus) values('Marcos','Abaurrea Rodriguez','111111111','maabro','clotfje','Coordinador');
+insert into usuaris(nom,cognoms,telefon,login,contrasenya,tipus) values('Victor','Lucas Sanchez','222222222','vilusa','fjeclot','Coordinador');
+insert into usuaris(nom,cognoms,telefon,login,contrasenya,tipus) values('Mek','Tort Ripoll','333333333','metori','123456','Gestor');
+insert into usuaris(nom,cognoms,telefon,login,contrasenya,tipus) values('Francesc','Pastor Pujals','444444444','frpapu','123456','Corrent');
+insert into espais(nomEspai,localitzacio,metresQuadrats,adaptat,sales,menjadors,habitacions,llitsdisponibles,llits) values('Alberg Be Hostels Sound','Barcelona',300,true,30,2,28,28,28);
+insert into avis(nom,cognoms,edat,minusvalia,telefon,telefonFamiliar,espaiId) values('Quentin','Jerome Tarantino',70,'FISICA',693275231,917283710,1);
+insert into avis(nom,cognoms,edat,minusvalia,telefon,telefonFamiliar,espaiId) values('Antonio','Fernández Resines',65,'FISICA',653775231,917289710,1);
+insert into avis(nom,cognoms,edat,minusvalia,telefon,telefonFamiliar,espaiId) values('María Olvido','Gara Jova',70,'FISICA',777275231,942283710,1);
+insert into avis(nom,cognoms,edat,minusvalia,telefon,telefonFamiliar,espaiId) values('Kevin','Spacey Fowler',76,'PSIQUICA',693276531,917287610,1);
+commit;
+unlock tables;
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    

@@ -14,21 +14,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="panelSuggerir" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SuggerirEspaiViewController">
    <children>
-      <Button fx:id="btnValidar" layoutX="30.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Validar">
+      <Button fx:id="btnValidar" onMouseClicked="#validar" layoutX="30.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Validar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnDenegar" layoutX="147.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Denegar">
+      <Button fx:id="btnDenegar" onMouseClicked="#denegar" layoutX="147.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Denegar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnReformular" layoutX="274.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Reformular">
+      <Button fx:id="btnReformular" onMouseClicked="#reformular" layoutX="274.0" layoutY="543.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Reformular">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+       
       <Label layoutX="30.0" layoutY="495.0" styleClass="labelUsuaris" stylesheets="@../resources/style.css" text="Opcions del coordinador" />
       <Pane fx:id="paneCoordinador" prefHeight="200.0" prefWidth="200.0" styleClass="paneSugCoordinador" stylesheets="@../resources/style.css">
          <children>
@@ -65,7 +66,7 @@
             <DatePicker fx:id="dataSortida" layoutX="360.0" layoutY="210.0" styleClass="inputSuggeriments" stylesheets="@../resources/style.css" />
             <Label layoutX="360.0" layoutY="173.0" styleClass="labelDates" stylesheets="@../resources/style.css" text="Data de sortida" />
             <Label layoutX="30.0" layoutY="270.0" styleClass="labelUsuaris" text="Opcions del gestor" />
-            <Button fx:id="btnSugerir" layoutX="30.0" layoutY="321.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Suggerir" />
+            <Button fx:id="btnSugerir" onMouseClicked="#sugerir" layoutX="30.0" layoutY="321.0" mnemonicParsing="false" styleClass="botonRegistro" stylesheets="@../resources/style.css" text="Suggerir" />
          </children>
       </Pane>
    </children>

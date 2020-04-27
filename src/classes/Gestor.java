@@ -5,6 +5,9 @@
  */
 package classes;
 
+import database.Utilitat;
+import java.sql.SQLException;
+
 /**
  * Clase per instancia gertors, extends d'usuari
  * @author Marcos, Victor
@@ -27,5 +30,8 @@ public class Gestor extends Usuari {
       
         }
     
-    public void sugerirLloc() {}
+    static public void sugerirLloc(int codiA,int codiE,String dateE,String dateS) throws SQLException {
+        Utilitat u =new Utilitat();
+        u.suggerirAvi(codiA,codiE,dateE,dateS);
+    }
 }

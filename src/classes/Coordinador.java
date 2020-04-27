@@ -3,6 +3,9 @@
  */
 package classes;
 
+import database.Utilitat;
+import java.sql.SQLException;
+
 /**
  * Clase per instanciar coordinadors, extends d'usuari
  * @author marco
@@ -24,11 +27,21 @@ public class Coordinador extends Usuari {
         super(codiUsuari,nomUsuari,cognomsUsuari,telfUsuari,loginUsuari,passUsuari);
     }
     
-    public void validarAssignacio() {}
+    static public void validarAssignacio(Avi a) throws SQLException {
+        Utilitat u =new Utilitat();
+        u.validarAvi(a.getCodiAvi());
+    }
     
-    public void denegarAssignacio() {}
+    static public void denegarAssignacio(Avi a) throws SQLException {
+        Utilitat u =new Utilitat();
+        u.denegarAvi(a.getCodiAvi());
+        
+    }
     
-    public void reformularAssignacio() {}
+    static public void reformularAssignacio(Avi a,int e) throws SQLException {
+    Utilitat u =new Utilitat();
+        u.reformularAvi(a.getCodiAvi(),e);
+    }
     
     public void afegirUsuari() {}
     

@@ -57,8 +57,8 @@ public class Avi {
         this.cognoms = cognoms;
     }
 
-    public Espai getEspai() {
-        return espai;
+    public int getEspai() {
+        return espai.getCodiEspai();
     }
 
     public void setEspai(Espai espai) {

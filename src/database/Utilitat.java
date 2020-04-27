@@ -2,6 +2,7 @@
  * Paquets
  */
 package database;
+
 /**
  * Imports
  */
@@ -21,6 +22,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Clase utilitat per fer operacions de la BD
+ *
  * @author Marcos, Victor
  */
 public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
@@ -28,8 +30,10 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
     private ResultSet resultSet = null;
     private PreparedStatement preparedStatement = null;
     private Statement statement = null;
+
     /**
      * Metode per registrar un usuari en la BD, implementat de IUsuariDAO
+     *
      * @param nom
      * @param cognoms
      * @param telefon
@@ -37,7 +41,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
      * @param pass
      * @param tipus
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public boolean registrarUsuari(String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
@@ -75,8 +79,10 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
 
         }
     }
+
     /**
-     * Metode per editar un usuari a la BD, implementat de IUsuariDAO 
+     * Metode per editar un usuari a la BD, implementat de IUsuariDAO
+     *
      * @param id
      * @param nom
      * @param cognoms
@@ -85,7 +91,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
      * @param pass
      * @param tipus
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public boolean editarUsuari(int id, String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
@@ -122,10 +128,12 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
+
     /**
      * Metode per eliminar un usuari, implementat de IUsuariDAO
+     *
      * @param id
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public void borrarUsuari(int id) throws SQLException {
@@ -137,10 +145,12 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             System.out.println(ex.toString());
         }
     }
+
     /**
      * Metode per llistas els usuaris en la taula, implementat de IUsuariDAO
+     *
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public ObservableList<Usuari> getUsuaris() throws SQLException {
@@ -162,8 +172,10 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         this.connect.close();
         return o;
     }
+
     /**
      * Metode per registrar un avi a la BD, implementat de IAviDAO
+     *
      * @param nom
      * @param cognoms
      * @param edat
@@ -171,7 +183,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
      * @param telefonFamiliar
      * @param minusvalia
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public boolean registrarAvi(String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, String minusvalia) throws SQLException {
@@ -207,10 +219,12 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
+
     /**
      * Metode per borrar una avi de la BD, implementat de IAviDAO
+     *
      * @param id
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public void borrarAvi(int id) throws SQLException {
@@ -222,10 +236,12 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             System.out.println(ex.toString());
         }
     }
+
     /**
      * Metode per llistar els avis, implementat de IAviDAO
+     *
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public ObservableList<Avi> getAvis() throws SQLException {
@@ -235,16 +251,35 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         this.resultSet = statement.executeQuery("SELECT * FROM avis");
         while (resultSet.next()) {
             Minusvalia min = Minusvalia.valueOf(resultSet.getString("minusvalia"));
-            o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"),resultSet.getInt("edat"), 
-                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min ));
+            o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getInt("edat"),
+                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min));
         }
         this.resultSet.close();
         this.statement.close();
         this.connect.close();
         return o;
     }
+
+    public ObservableList<Avi> getAvisSugerits() throws SQLException {
+        ObservableList<Avi> o = FXCollections.observableArrayList();
+        this.conectar();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM avis where suggerit=true");
+        while (resultSet.next()) {
+            Minusvalia min = Minusvalia.valueOf(resultSet.getString("minusvalia"));
+
+            o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getInt("edat"),
+                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min));
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return o;
+    }
+
     /**
      * Metode per editar avis, implementat de IAviDAO
+     *
      * @param codiAvi
      * @param nom
      * @param cognoms
@@ -253,7 +288,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
      * @param telefonFamiliar
      * @param minusvalia
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public boolean editarAvi(int codiAvi, String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, String minusvalia) throws SQLException {
@@ -291,12 +326,142 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         }
     }
 
+    public boolean validarAvi(int id) throws SQLException {
+        try {
+            this.conectar();
+            this.connect.setAutoCommit(false);
+            this.preparedStatement = this.connect.prepareStatement("update avis set suggerit=?,aprovat=? where aviId=?");
+            this.preparedStatement.setBoolean(1, false);
+            this.preparedStatement.setBoolean(2, true);
+            this.preparedStatement.setInt(3, id);
+            this.preparedStatement.executeUpdate();
+            this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException sqle) {
+            System.out.println("El avi ja existeix. Prova un altre.");
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            if (this.connect != null) {
+                try {
+                    this.connect.rollback();
+                    return false;
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
+     public boolean denegarAvi(int id) throws SQLException {
+        try {
+            this.conectar();
+            this.connect.setAutoCommit(false);
+            this.preparedStatement = this.connect.prepareStatement("update avis set suggerit=? where aviId=?");
+            this.preparedStatement.setBoolean(1, false);
+            this.preparedStatement.setInt(2, id);
+            this.preparedStatement.executeUpdate();
+            this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException sqle) {
+            System.out.println("El avi ja existeix. Prova un altre.");
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            if (this.connect != null) {
+                try {
+                    this.connect.rollback();
+                    return false;
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
+     public boolean reformularAvi(int id,int esp) throws SQLException {
+        try {
+            this.conectar();
+            this.connect.setAutoCommit(false);
+            this.preparedStatement = this.connect.prepareStatement("update avis set suggerit=?,aprovat=?,espaiId=? where aviId=?");
+            this.preparedStatement.setBoolean(1, false);
+            this.preparedStatement.setBoolean(2, true);
+            this.preparedStatement.setInt(3, esp);
+            this.preparedStatement.setInt(4, id);
+            this.preparedStatement.executeUpdate();
+            this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException sqle) {
+            System.out.println("El avi ja existeix. Prova un altre.");
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            if (this.connect != null) {
+                try {
+                    this.connect.rollback();
+                    return false;
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
+    
+
+    public boolean suggerirAvi(int codiA, int codiE, String dateE, String dateS) throws SQLException {
+        try {
+            this.conectar();
+            this.connect.setAutoCommit(false);
+            this.preparedStatement = this.connect.prepareStatement("update avis set suggerit=? where aviId=?");
+            this.preparedStatement.setBoolean(1, true);
+            this.preparedStatement.setInt(2, codiA);
+            this.preparedStatement.executeUpdate();
+            this.preparedStatement.close();
+            this.preparedStatement = this.connect.prepareStatement("insert into historial(diaLlegada,diaSalida,aviId,espaiId) values (?, ?, ?, ?)");
+            this.preparedStatement.setString(1, dateE);
+            this.preparedStatement.setString(2, dateS);
+            this.preparedStatement.setInt(3, codiA);
+            this.preparedStatement.setInt(4, codiE);
+            this.preparedStatement.executeUpdate();
+            this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException sqle) {
+            System.out.println("El avi ja existeix. Prova un altre.");
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            if (this.connect != null) {
+                try {
+                    this.connect.rollback();
+                    return false;
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
+
     /**
      * Metode per inicia sesio en l'aplicacio
+     *
      * @param user
      * @param pass
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public boolean login(String user, String pass) throws SQLException {
         this.conectar();
@@ -309,11 +474,13 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
+
     /**
      * Metode per saber si un usuari es coordinador
+     *
      * @param user
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public boolean coordinador(String user) throws SQLException {
         this.conectar();
@@ -331,11 +498,13 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         this.connect.close();
         return false;
     }
+
     /**
      * Metode per saber si un usuari es gestor
+     *
      * @param user
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public boolean gestor(String user) throws SQLException {
         this.conectar();
