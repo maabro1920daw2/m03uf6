@@ -1,10 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package main;
-
+/**
+ * Imports
+ */
 import java.awt.TextField;
 import java.io.File;
 import java.sql.Connection;
@@ -25,8 +25,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 /**
- *
- * @author >Victor
+ * Clase principal de l'aplicacio
+ * @author >Victor, Marcos
  */
 public class main extends Application {
     private Connection connect = null;
@@ -36,7 +36,11 @@ public class main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+    /**
+     * Metode per iniciar l'escena
+     * @param stage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/views/InicioView.fxml"));

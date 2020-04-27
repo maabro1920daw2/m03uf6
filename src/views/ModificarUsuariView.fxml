@@ -30,5 +30,7 @@
          </cursor>
       </Button>
       <TextField fx:id="modNom" layoutX="30.0" layoutY="172.0" promptText="Nom de l'usuari" styleClass="inputNombreUsuari" stylesheets="@../resources/style.css" />
+      <Label fx:id="infoError" layoutX="30.0" layoutY="443.0" styleClass="infoError" text="Error al modificar l'usuari" />
+      <Label fx:id="infoCorrecto" layoutX="30.0" layoutY="443.0" styleClass="infoSesion" text="Usuari modificat correctament" />
    </children>
 </AnchorPane>

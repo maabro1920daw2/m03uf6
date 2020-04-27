@@ -1,21 +1,54 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package interfaces;
-
+/**
+ * Imports
+ */
 import classes.Avi;
 import java.sql.SQLException;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author Marcos
+ * Interficie pels metodes DAO dels avis
+ * @author Marcos, Victor
  */
 public interface IAviDAO {
-    public boolean registrarAvi(String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException;
+    /**
+     * Declaracio del metode per registrar avis
+     * @param nom
+     * @param cognoms
+     * @param edat
+     * @param numTelefon
+     * @param telefonFamiliar
+     * @param minusvalia
+     * @return
+     * @throws SQLException 
+     */
+    public boolean registrarAvi(String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, String minusvalia) throws SQLException;
+    /**
+     * Declaracio del metode per eliminar avis
+     * @param id
+     * @throws SQLException 
+     */
     public void borrarAvi(int id) throws SQLException;
+    /**
+     * Declaracio del metode per llistar avis
+     * @return
+     * @throws SQLException 
+     */
     public ObservableList<Avi> getAvis() throws SQLException;
-    public boolean editarAvi(int id, String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException;
+    /**
+     * Declaracio del metode per editar avis
+     * @param codiAvi
+     * @param nom
+     * @param cognoms
+     * @param edat
+     * @param numTelefon
+     * @param telefonFamiliar
+     * @param minusvalia
+     * @return
+     * @throws SQLException 
+     */
+    public boolean editarAvi(int codiAvi, String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, String minusvalia) throws SQLException;
 }

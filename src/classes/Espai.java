@@ -1,23 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ /*
+ * Paquets
  */
 package classes;
 
 /**
- *
- * @author marco
+ * Clase per als espais
+ * @author Marcos, Victor
  */
 public class Espai {
     private String localitzacio;
     private double metresQuadrats;
     private boolean adaptat;
-    private int codiEspai, sales, llitsDisponibles, llits;
+    private int codiEspai, llitsDisponibles, llits;
+    private Sala sales;
     
     public Espai() {}
-    
-    public Espai(int codiEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int llitsDisponibles, int llits) {
+    /**
+     * Constructor espais
+     * @param codiEspai
+     * @param localitzacio
+     * @param metresQuadrats
+     * @param adaptat
+     * @param sales
+     * @param llitsDisponibles
+     * @param llits 
+     */
+    public Espai(int codiEspai, String localitzacio, double metresQuadrats, boolean adaptat, Sala sales, int llitsDisponibles, int llits) {
         this.codiEspai = codiEspai;
         this.localitzacio = localitzacio;
         this.metresQuadrats = metresQuadrats;
@@ -65,14 +73,6 @@ public class Espai {
 
     public void setCodiEspai(int codiEspai) {
         this.codiEspai = codiEspai;
-    }
-
-    public int getSales() {
-        return sales;
-    }
-
-    public void setSales(int sales) {
-        this.sales = sales;
     }
 
     public int getLlitsDisponibles() {

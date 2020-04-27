@@ -35,5 +35,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label fx:id="infoError" layoutX="30.0" layoutY="443.0" styleClass="infoError" text="Error al registrar l'espai" />
+      <Label fx:id="infoCorrecto" layoutX="30.0" layoutY="443.0" styleClass="infoSesion" text="Espai registrat correctament" />
    </children>
 </AnchorPane>

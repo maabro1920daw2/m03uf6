@@ -1,10 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package controllers;
-
+/**
+ * Imports
+ */
 import database.Utilitat;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author Marcos
+ * @author Marcos, Victor
  */
 public class RegUsuariViewController implements Initializable {
 
@@ -58,12 +58,19 @@ public class RegUsuariViewController implements Initializable {
         infoCorrecto.setVisible(false);
         infoError.setVisible(false);
     }    
-
+    /**
+     * Metode per tancar l'aplicacio
+     * @param event 
+     */
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
     }
-
+    /**
+     * Metode per guardar a la BD desde la vista
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void guardarBasedatos(MouseEvent event) throws SQLException {
         if(event.getSource().equals(btnGuardar)){

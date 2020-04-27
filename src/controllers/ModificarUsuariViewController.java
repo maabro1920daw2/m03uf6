@@ -1,10 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package controllers;
-
+/**
+ * Imports
+ */
 import database.Utilitat;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -22,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author Marcos
+ * @author Marcos, Victor
  */
 public class ModificarUsuariViewController implements Initializable {
 
@@ -42,6 +43,10 @@ public class ModificarUsuariViewController implements Initializable {
     private TextField idUsuari;
     @FXML
     private Button btnGuardar;
+    @FXML
+    private Label infoError;
+    @FXML
+    private Label infoCorrecto;
 
     /**
      * Initializes the controller class.
@@ -51,13 +56,22 @@ public class ModificarUsuariViewController implements Initializable {
         ObservableList<String> tipos = FXCollections.observableArrayList();
         tipos.addAll("Coordinador", "Gestor", "Corrent");
         modTipus.setItems(tipos);
+        infoCorrecto.setVisible(false);
+        infoError.setVisible(false);
     }    
-
+    /**
+     * Metode per tancar l'aplicacio
+     * @param event 
+     */
     @FXML
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
     }
-
+    /**
+     * Metode per actualitzar la BD desde la vista
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void actualizarBD(MouseEvent event) throws SQLException {
         if(event.getSource().equals(btnGuardar)){

@@ -1,15 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Paquets
  */
 package database;
-
+/**
+ * Imports
+ */
 import classes.Avi;
 import classes.Coordinador;
 import classes.Corrent;
 import classes.Gestor;
 import classes.Usuari;
+import enumerations.Minusvalia;
 import interfaces.IAviDAO;
 import interfaces.IUsuariDAO;
 import java.sql.*;
@@ -19,15 +20,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author marco
+ * Clase utilitat per fer operacions de la BD
+ * @author Marcos, Victor
  */
 public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
 
     private ResultSet resultSet = null;
     private PreparedStatement preparedStatement = null;
     private Statement statement = null;
-    
+    /**
+     * Metode per registrar un usuari en la BD, implementat de IUsuariDAO
+     * @param nom
+     * @param cognoms
+     * @param telefon
+     * @param user
+     * @param pass
+     * @param tipus
+     * @return
+     * @throws SQLException 
+     */
     @Override
     public boolean registrarUsuari(String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
         try {
@@ -64,7 +75,18 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
 
         }
     }
-    
+    /**
+     * Metode per editar un usuari a la BD, implementat de IUsuariDAO 
+     * @param id
+     * @param nom
+     * @param cognoms
+     * @param telefon
+     * @param user
+     * @param pass
+     * @param tipus
+     * @return
+     * @throws SQLException 
+     */
     @Override
     public boolean editarUsuari(int id, String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
         try {
@@ -100,7 +122,11 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
-    
+    /**
+     * Metode per eliminar un usuari, implementat de IUsuariDAO
+     * @param id
+     * @throws SQLException 
+     */
     @Override
     public void borrarUsuari(int id) throws SQLException {
         try {
@@ -111,7 +137,11 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             System.out.println(ex.toString());
         }
     }
-    
+    /**
+     * Metode per llistas els usuaris en la taula, implementat de IUsuariDAO
+     * @return
+     * @throws SQLException 
+     */
     @Override
     public ObservableList<Usuari> getUsuaris() throws SQLException {
         ObservableList<Usuari> o = FXCollections.observableArrayList();
@@ -132,34 +162,33 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         this.connect.close();
         return o;
     }
-
+    /**
+     * Metode per registrar un avi a la BD, implementat de IAviDAO
+     * @param nom
+     * @param cognoms
+     * @param edat
+     * @param numTelefon
+     * @param telefonFamiliar
+     * @param minusvalia
+     * @return
+     * @throws SQLException 
+     */
     @Override
-    public boolean registrarAvi(String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void borrarAvi(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ObservableList<Avi> getAvis() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean editarAvi(int id, String nom, String cognoms, String telefon, String user, String pass, String tipus) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public boolean registrarAvi(String nom, String cognom, String tel, String familiar, int edat, String minus) throws SQLException {
+    public boolean registrarAvi(String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, String minusvalia) throws SQLException {
         try {
             this.conectar();
             this.connect.setAutoCommit(false);
-            Statement st = this.connect.createStatement();
-            st.executeUpdate("INSERT INTO AVIS(nom,cognom,edat,tel,familiar) VALUES(" + nom + "," + cognom + "," + edat + "," + tel + "," + familiar + "," + minus + ")");
+            this.preparedStatement = this.connect.prepareStatement("insert into avis(nom,cognoms,edat,minusvalia,telefon,telefonFamiliar) values (?, ?, ?, ?, ?, ?)");
+            this.preparedStatement.setString(1, nom);
+            this.preparedStatement.setString(2, cognoms);
+            this.preparedStatement.setInt(3, edat);
+            this.preparedStatement.setString(4, minusvalia);
+            this.preparedStatement.setString(5, numTelefon);
+            this.preparedStatement.setString(6, telefonFamiliar);
+            this.preparedStatement.executeUpdate();
             this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
             return true;
         } catch (SQLIntegrityConstraintViolationException sqle) {
             System.out.println("El avi ja existeix. Prova un altre.");
@@ -176,17 +205,73 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
                 }
             }
             return false;
-
         }
     }
-
-    public boolean registrarEspai(String localitzacio, float superficie, int sales, int menaidors, int habitacions) throws SQLException {
-        this.conectar();
+    /**
+     * Metode per borrar una avi de la BD, implementat de IAviDAO
+     * @param id
+     * @throws SQLException 
+     */
+    @Override
+    public void borrarAvi(int id) throws SQLException {
         try {
+            this.conectar();
+            this.statement = this.connect.createStatement();
+            statement.executeUpdate("DELETE FROM avis where aviId='" + id + "'");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+    /**
+     * Metode per llistar els avis, implementat de IAviDAO
+     * @return
+     * @throws SQLException 
+     */
+    @Override
+    public ObservableList<Avi> getAvis() throws SQLException {
+        ObservableList<Avi> o = FXCollections.observableArrayList();
+        this.conectar();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM avis");
+        while (resultSet.next()) {
+            Minusvalia min = Minusvalia.valueOf(resultSet.getString("minusvalia"));
+            o.add(new Avi(resultSet.getInt("aviId"), resultSet.getString("nom"), resultSet.getString("cognoms"),resultSet.getInt("edat"), 
+                    resultSet.getString("telefon"), resultSet.getString("telefonFamiliar"), min ));
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return o;
+    }
+    /**
+     * Metode per editar avis, implementat de IAviDAO
+     * @param codiAvi
+     * @param nom
+     * @param cognoms
+     * @param edat
+     * @param numTelefon
+     * @param telefonFamiliar
+     * @param minusvalia
+     * @return
+     * @throws SQLException 
+     */
+    @Override
+    public boolean editarAvi(int codiAvi, String nom, String cognoms, int edat, String numTelefon, String telefonFamiliar, String minusvalia) throws SQLException {
+        try {
+            this.conectar();
             this.connect.setAutoCommit(false);
-            Statement st = this.connect.createStatement();
-            st.executeUpdate("INSERT INTO ESPAIS(localitzacio,superficie,sales,menaidors,habitacions) VALUES(" + localitzacio + "," + superficie + "," + sales + "," + menaidors + "," + habitacions + ")");
+            this.preparedStatement = this.connect.prepareStatement("update avis set nom=?, cognoms=?, edat=?, minusvalia=?, telefon=?, telefonFamiliar=? where aviId=?");
+            this.preparedStatement.setString(1, nom);
+            this.preparedStatement.setString(2, cognoms);
+            this.preparedStatement.setInt(3, edat);
+            this.preparedStatement.setString(4, minusvalia);
+            this.preparedStatement.setString(5, numTelefon);
+            this.preparedStatement.setString(6, telefonFamiliar);
+            this.preparedStatement.setInt(7, codiAvi);
+            this.preparedStatement.executeUpdate();
             this.connect.commit();
+            this.preparedStatement.close();
+            this.connect.close();
             return true;
         } catch (SQLIntegrityConstraintViolationException sqle) {
             System.out.println("El avi ja existeix. Prova un altre.");
@@ -206,6 +291,13 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         }
     }
 
+    /**
+     * Metode per inicia sesio en l'aplicacio
+     * @param user
+     * @param pass
+     * @return
+     * @throws SQLException 
+     */
     public boolean login(String user, String pass) throws SQLException {
         this.conectar();
         try {
@@ -217,7 +309,12 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
             return false;
         }
     }
-
+    /**
+     * Metode per saber si un usuari es coordinador
+     * @param user
+     * @return
+     * @throws SQLException 
+     */
     public boolean coordinador(String user) throws SQLException {
         this.conectar();
         this.statement = this.connect.createStatement();
@@ -234,7 +331,12 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO {
         this.connect.close();
         return false;
     }
-
+    /**
+     * Metode per saber si un usuari es gestor
+     * @param user
+     * @return
+     * @throws SQLException 
+     */
     public boolean gestor(String user) throws SQLException {
         this.conectar();
         this.statement = this.connect.createStatement();

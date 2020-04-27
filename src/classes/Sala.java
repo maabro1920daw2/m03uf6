@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Paquets
  */
 package classes;
 
 /**
- *
- * @author marco
+ * Clase Sala 
+ * @author Marcos, Victor
  */
 public class Sala {
     protected int codi;
