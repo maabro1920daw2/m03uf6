@@ -96,7 +96,7 @@ public class InicioViewController implements Initializable {
 
             MenuViewController m = loader.getController();
 
-            m.isCoordinador(u.coordinador(usuario),u.gestor(usuario));
+            m.isCoordinador(u.coordinador(usuario),u.gestor(usuario),u.corrent(usuario));
 
             Scene scene = btnLogin.getScene();
 

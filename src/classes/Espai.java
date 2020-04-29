@@ -25,7 +25,8 @@ public class Espai {
      * @param llitsDisponibles
      * @param llits 
      */
-    public Espai(int codiEspai,String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales,int menjadors,int habitacions, int llitsDisponibles, int llits) {
+    public Espai(int codiEspai,String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales,int menjadors,
+            int habitacions, int llitsDisponibles, int llits) {
         this.codiEspai = codiEspai;
         this.localitzacio = localitzacio;
         this.metresQuadrats = metresQuadrats;

@@ -75,10 +75,13 @@ public class RegUsuariViewController implements Initializable {
     private void guardarBasedatos(MouseEvent event) throws SQLException {
         if(event.getSource().equals(btnGuardar)){
             Utilitat u= new Utilitat();           
-            if(u.registrarUsuari(nomUsuari.getText(),cognomUsuari.getText(),telefonUsuari.getText(),loginUsuari.getText(), contrasenyaUsuari.getText(), tipusUsuari.getValue())){
-                infoCorrecto.setVisible(true);
-            }else{
+            if(nomUsuari.getText().isEmpty() || cognomUsuari.getText().isEmpty() || telefonUsuari.getText().isEmpty() 
+                    || loginUsuari.getText().isEmpty()  || contrasenyaUsuari.getText().isEmpty()){
                 infoError.setVisible(true);
+            }else{               
+                u.registrarUsuari(nomUsuari.getText(),cognomUsuari.getText(),telefonUsuari.getText(),loginUsuari.getText(), 
+                        contrasenyaUsuari.getText(), tipusUsuari.getValue());
+                infoCorrecto.setVisible(true);
             }    
         }
     }

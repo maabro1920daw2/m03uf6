@@ -31,18 +31,6 @@ abstract public class Usuari {
         this.tipus = this.getClass().getSimpleName();
     }
     
-    public void afegirAvi() {}
-    
-    public void modificarAvi() {}
-    
-    public void eliminarAvi() {}
-    
-    public void afegirEspai() {}
-    
-    public void modificarEspai() {}
-    
-    public void eliminarEspai() {}
-
     public String getTelfUsuari() {
         return telfUsuari;
     }

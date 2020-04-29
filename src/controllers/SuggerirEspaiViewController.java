@@ -35,7 +35,7 @@ import javafx.scene.layout.Pane;
  * @author Marcos, Victor
  */
 public class SuggerirEspaiViewController implements Initializable {
-    private boolean coord,gestor;
+    private boolean coord,gestor,corrent;
     @FXML
     private Button btnValidar;
     @FXML
@@ -114,12 +114,13 @@ public class SuggerirEspaiViewController implements Initializable {
     /**
      * Metode per identificar el tipus de l'usuari
      * @param c
-     * @param g 
+     * @param g
+     * @param co
      */
-    public void whatTipus(boolean c,boolean g){
-        System.out.println("hola");
+    public void whatTipus(boolean c,boolean g,boolean co){
         coord=c;
         gestor=g;
+        corrent=co;
         mostrar();
     }
 

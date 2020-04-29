@@ -79,15 +79,15 @@ public class RegAviViewController implements Initializable {
     private void guardarBasedatos(MouseEvent event) throws SQLException {
         if (event.getSource().equals(btnGuardarAvi)) {
             Utilitat u = new Utilitat();
-            if (!stringContainsNumber(nomAvi.getText()) || !stringContainsNumber(cognomAvi.getText()) || !stringContainsLetter(telefonAvi.getText()) || !stringContainsLetter(falimiarAvi.getText())) {
+            if (!stringContainsNumber(nomAvi.getText()) || !stringContainsNumber(cognomAvi.getText()) 
+                    || !stringContainsLetter(telefonAvi.getText()) || !stringContainsLetter(falimiarAvi.getText())) {
                 if (u.registrarAvi(nomAvi.getText(), cognomAvi.getText(), Integer.parseInt(edatAvi.getText()),
                         telefonAvi.getText(), falimiarAvi.getText(), selectMinusvalia.getValue())) {
                     infoCorrecto.setVisible(true);
                 } else {
                     infoError.setVisible(true);
                 }
-            }
-            else{
+            } else {
                 infoError.setText("Algunas dadas no estan en formato completo");
                 infoError.setVisible(true);
             }
@@ -97,7 +97,8 @@ public class RegAviViewController implements Initializable {
     public boolean stringContainsNumber(String s) {
         return Pattern.compile("[0-9]").matcher(s).find();
     }
-   public boolean stringContainsLetter(String s) {
+
+    public boolean stringContainsLetter(String s) {
         return Pattern.compile("[a-zA-Z]").matcher(s).find();
     }
 }

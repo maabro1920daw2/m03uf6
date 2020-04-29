@@ -107,9 +107,7 @@ public class LlistaAvisViewController implements Initializable {
         });
 
         SortedList<Avi> sortedData = new SortedList<>(filteredData);
-
         sortedData.comparatorProperty().bind(tableAvis.comparatorProperty());
-
         tableAvis.setItems(sortedData);
     }
 

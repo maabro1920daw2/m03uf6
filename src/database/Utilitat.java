@@ -76,9 +76,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
                     return false;
                 }
             }
-
             return false;
-
         }
     }
 
@@ -113,7 +111,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
             this.preparedStatement.close();
             this.connect.close();
             return true;
-        } catch (SQLIntegrityConstraintViolationException sqle) {
+        } catch (InputMismatchException sqle) {
             System.out.println("El usuari ja existeix. Prova un altre.");
             return false;
         } catch (SQLException e) {
@@ -162,11 +160,14 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
         this.resultSet = statement.executeQuery("SELECT * FROM usuaris");
         while (resultSet.next()) {
             if (resultSet.getString("tipus").equalsIgnoreCase("coordinador")) {
-                o.add(new Coordinador(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
+                o.add(new Coordinador(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), 
+                        resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
             } else if (resultSet.getString("tipus").equalsIgnoreCase("gestor")) {
-                o.add(new Gestor(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
+                o.add(new Gestor(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), 
+                        resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
             } else {
-                o.add(new Corrent(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
+                o.add(new Corrent(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("cognoms"), 
+                        resultSet.getString("telefon"), resultSet.getString("login"), resultSet.getString("contrasenya")));
             }
         }
         this.resultSet.close();
@@ -264,17 +265,16 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
 
     public Espai getEspai(int id) throws SQLException {
         Espai e = new Espai();
-
         this.statement = this.connect.createStatement();
         this.resultSet = statement.executeQuery("SELECT * FROM espais where espaiId='" + id + "'");
         while (resultSet.next()) {
 
             e = new Espai(resultSet.getInt("espaiId"), resultSet.getString("nomEspai"), resultSet.getString("localitzacio"), resultSet.getDouble("metresQuadrats"),
-                    resultSet.getBoolean("adaptat"), resultSet.getInt("sales"), resultSet.getInt("menjadors"), resultSet.getInt("habitacions"), resultSet.getInt("llitsDisponibles"), resultSet.getInt("llits"));
+                    resultSet.getBoolean("adaptat"), resultSet.getInt("sales"), resultSet.getInt("menjadors"), 
+                    resultSet.getInt("habitacions"), resultSet.getInt("llitsDisponibles"), resultSet.getInt("llits"));
         }
         this.resultSet.close();
         this.statement.close();
-
         return e;
     }
 
@@ -285,7 +285,6 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
         ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM avis where suggerit=true");
         while (resultSet1.next()) {
             Minusvalia min = Minusvalia.valueOf(resultSet1.getString("minusvalia"));
-
             o.add(new Avi(resultSet1.getInt("aviId"), resultSet1.getString("nom"), resultSet1.getString("cognoms"), resultSet1.getInt("edat"),
                     resultSet1.getString("telefon"), resultSet1.getString("telefonFamiliar"), min, this.getEspai(resultSet1.getInt("espaiId"))));
         }
@@ -358,7 +357,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
             this.connect.close();
             return true;
         } catch (SQLIntegrityConstraintViolationException sqle) {
-            System.out.println("El avi ja existeix. Prova un altre.");
+            System.out.println("Error");
             return false;
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -542,14 +541,33 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
         this.connect.close();
         return false;
     }
+    
+    public boolean corrent(String user) throws SQLException {
+        this.conectar();
+        this.statement = this.connect.createStatement();
+        this.resultSet = statement.executeQuery("SELECT * FROM usuaris where login='" + user + "'");
+        while (resultSet.next()) {
+            if (resultSet.getString("tipus").equalsIgnoreCase("corrent")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        this.resultSet.close();
+        this.statement.close();
+        this.connect.close();
+        return false;
+    }
 
     @Override
-    public boolean registrarEspai(String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int menjadors, int habitacions, int llitsDisponibles, int llits) throws SQLException {
+    public boolean registrarEspai(String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int menjadors, 
+            int habitacions, int llitsDisponibles, int llits) throws SQLException {
         //To change body of generated methods, choose Tools | Templates.
         try {
             this.conectar();
             this.connect.setAutoCommit(false);
-            this.preparedStatement = this.connect.prepareStatement("insert into espais(nomEspai,localitzacio,metresQuadrats,adaptat,sales,menjadors,habitacions,llitsDisponibles,llits) values (?, ?, ?, ?, ?, ?,?,?,?)");
+            this.preparedStatement = this.connect.prepareStatement("insert into espais(nomEspai,localitzacio,metresQuadrats,adaptat,sales,menjadors,"
+                    + "habitacions,llitsDisponibles,llits) values (?, ?, ?, ?, ?, ?,?,?,?)");
             this.preparedStatement.setString(1, nomEspai);
             this.preparedStatement.setString(2, localitzacio);
             this.preparedStatement.setDouble(3, metresQuadrats);
@@ -578,11 +596,8 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
                     return false;
                 }
             }
-
             return false;
-
         }
-
     }
 
     @Override
@@ -590,7 +605,7 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
         try {
             this.conectar();
             this.statement = this.connect.createStatement();
-            statement.executeUpdate("DELETE FROM avis where espaisId='" + id + "'");
+            statement.executeUpdate("DELETE FROM espais where espaisId='" + id + "'");
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
@@ -614,11 +629,13 @@ public class Utilitat extends Connexio implements IUsuariDAO, IAviDAO, IEspaiDAO
     }
 
     @Override
-    public boolean editarEspai(int codiEspai, String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, int menjadors, int habitacions, int llitsDisponibles, int llits) throws SQLException {
+    public boolean editarEspai(int codiEspai, String nomEspai, String localitzacio, double metresQuadrats, boolean adaptat, int sales, 
+            int menjadors, int habitacions, int llitsDisponibles, int llits) throws SQLException {
         try {
             this.conectar();
             this.connect.setAutoCommit(false);
-            this.preparedStatement = this.connect.prepareStatement("update espai set nomEspai=?, localitzacio=?, metresQuadrats=?, adaptat=?, sales=?, menjadors=?, habitacions=?, llits=? where espaisId=?");
+            this.preparedStatement = this.connect.prepareStatement("update espai set nomEspai=?, localitzacio=?, metresQuadrats=?,"
+                    + " adaptat=?, sales=?, menjadors=?, habitacions=?, llits=? where espaisId=?");
             this.preparedStatement.setString(1, nomEspai);
             this.preparedStatement.setString(2, localitzacio);
             this.preparedStatement.setBoolean(3, adaptat);

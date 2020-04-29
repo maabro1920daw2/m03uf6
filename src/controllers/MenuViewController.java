@@ -30,12 +30,12 @@ import javafx.util.Duration;
  * @author Marcos
  */
 public class MenuViewController implements Initializable {
-    private boolean coord=false,gestor=false;
+    private boolean coord=false,gestor=false,corrent=false;
     @FXML
     private BorderPane mainPane;
     
     @FXML
-    private Button regUser,modUser,cerUser;
+    private Button regUser,modUser,cerUser,sugEspai;
 
     /**
      * Initializes the controller class.
@@ -115,22 +115,26 @@ public class MenuViewController implements Initializable {
         Utilitat u = new Utilitat();
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SuggerirEspaiView.fxml"));
             Parent root = loader.load();
-
             SuggerirEspaiViewController s = loader.getController();
-
-            s.whatTipus(coord,gestor);
-
+            s.whatTipus(coord,gestor,corrent);
             mainPane.setCenter(root);
     }
     
     @FXML
-    public void isCoordinador(boolean message,boolean m2){
+    public void isCoordinador(boolean message,boolean m2,boolean m3){
         coord=message;
         gestor=m2;
+        corrent=m3;
         if(!coord){
             regUser.setDisable(true);
             modUser.setDisable(true);
             cerUser.setDisable(true);
+        }
+        if(corrent){
+            regUser.setDisable(true);
+            modUser.setDisable(true);
+            cerUser.setDisable(true);
+            sugEspai.setDisable(true);
         }
     }
 }

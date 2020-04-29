@@ -109,6 +109,8 @@ public class LlistaUsuarisViewController implements Initializable {
                     return true; // Filter matches first name.
                 } else if (usuari.getTipus().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
+                } else if (usuari.getLoginUsuari().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
                 } else {
                     return false; // Does not match.
                 }
@@ -116,9 +118,7 @@ public class LlistaUsuarisViewController implements Initializable {
         });
 
         SortedList<Usuari> sortedData = new SortedList<>(filteredData);
-
         sortedData.comparatorProperty().bind(tableUsuaris.comparatorProperty());
-
         tableUsuaris.setItems(sortedData);
     }
 }

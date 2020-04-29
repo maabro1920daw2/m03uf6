@@ -77,7 +77,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#sugEspai" prefHeight="55.0" prefWidth="150.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Suggerir espai">
+            <Button fx:id="sugEspai" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#sugEspai" prefHeight="55.0" prefWidth="150.0" styleClass="botonMenu" stylesheets="@../resources/style.css" text="Suggerir espai">
                <graphic>
                   <FontAwesomeIconView glyphName="COMMENT" styleClass="icoMenu" />
                </graphic>

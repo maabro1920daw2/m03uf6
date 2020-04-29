@@ -52,7 +52,7 @@ public class LlistaEspaisViewController implements Initializable {
     @FXML
     private TableColumn colHabDisp;
     @FXML
-    private TableView tableEspais;
+    private TableView<Espai> tableEspais;
     @FXML
     private Button borrarEspai;
 
@@ -68,6 +68,7 @@ public class LlistaEspaisViewController implements Initializable {
     private void cerrarPrograma(MouseEvent event) {
         System.exit(0);
     }
+    
     private void mostrar() {
         Utilitat u = new Utilitat();
         ObservableList<Espai> gs = FXCollections.observableArrayList();
@@ -89,12 +90,10 @@ public class LlistaEspaisViewController implements Initializable {
         filteredData = new FilteredList<>(gs, b -> true);
 
         buscadorEspai.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(espai -> {
-                // If filter text is empty, display all persons.						
+            filteredData.setPredicate(espai -> {						
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-                // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
                 if (espai.getLocalitzacio().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches first name.
@@ -105,9 +104,7 @@ public class LlistaEspaisViewController implements Initializable {
         });
 
         SortedList<Espai> sortedData = new SortedList<>(filteredData);
-
         sortedData.comparatorProperty().bind(tableEspais.comparatorProperty());
-
         tableEspais.setItems(sortedData);
     }    
 }

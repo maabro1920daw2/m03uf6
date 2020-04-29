@@ -76,11 +76,13 @@ public class ModificarUsuariViewController implements Initializable {
     private void actualizarBD(MouseEvent event) throws SQLException {
         if(event.getSource().equals(btnGuardar)){
             Utilitat u= new Utilitat();           
-            if(u.editarUsuari(Integer.parseInt(idUsuari.getText()), modNom.getText(), modCognoms.getText(), 
-                    modTelefon.getText(), modLogin.getText(), modContrasenya.getText(), modTipus.getValue())){
-                //infoCorrecto.setVisible(true);
+            if(modNom.getText().isEmpty() || modCognoms.getText().isEmpty() || modTelefon.getText().isEmpty()
+                    || modLogin.getText().isEmpty()  || modContrasenya.getText().isEmpty() || idUsuari.getText().isEmpty()){
+                infoError.setVisible(true);
             }else{
-                //infoError.setVisible(true);
+                u.editarUsuari(Integer.parseInt(idUsuari.getText()), modNom.getText(), modCognoms.getText(), 
+                modTelefon.getText(), modLogin.getText(), modContrasenya.getText(), modTipus.getValue());
+                infoCorrecto.setVisible(true);
             }    
         }
     }

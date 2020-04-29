@@ -43,9 +43,4 @@ public class Coordinador extends Usuari {
         u.reformularAvi(a.getCodiAvi(),e);
     }
     
-    public void afegirUsuari() {}
-    
-    public void modificarUsuari() {}
-    
-    public void eliminarUsuari() {}
 }
